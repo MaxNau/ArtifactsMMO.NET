@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Artifacts MMO client</Title>
+    <Authors>Maksym Naumov</Authors>
+    <Description>Artifacts MMO client</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <VersionPrefix>2.3.0</VersionPrefix>
+    <FileVersion>2.3.0</FileVersion>
+    <AssemblyVersion>2.3.0</AssemblyVersion>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+  </ItemGroup>
+
+</Project>
