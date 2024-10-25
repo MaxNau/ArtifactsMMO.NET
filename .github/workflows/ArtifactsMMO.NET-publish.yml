@@ -49,6 +49,15 @@ jobs:
       
     - name: Build
       run: dotnet build ./src/ArtifactsMMO.NET/ArtifactsMMO.NET.csproj --no-restore --configuration Release
-      
+
     - name: Test
       run: dotnet test ./src/ArtifactsMMO.NET/ArtifactsMMO.NET.csproj --no-build --configuration Release --verbosity normal
+
+    - name: Pack
+      id: pack_ammo
+      if: env.proceed == 'true'
+      run: dotnet pack ./src/ArtifactsMMO.NET/ArtifactsMMO.NET.csproj --configuration Release --output ./nupkg /p:Version=${{ env.version }}
+
+    - name: Publish
+      if: steps.pack_ammo.outcome == 'success'
+      run: dotnet nuget push ./nupkg/ArtifactsMMO.NET.*.nupkg --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGET_API_KEY }}
