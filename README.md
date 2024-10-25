@@ -24,14 +24,18 @@ For detailed error information, check the ApiError object returned in case of un
 
 ## Usage
 
-Using ArtifactsMMO.NET.DependencyInjection.Extensions
+Core client:
 
 ```csharp
+// Using ArtifactsMMO.NET.DependencyInjection.Extensions
 var serviceProvider = new ServiceCollection()
 .AddArtifactsMMOClient("<your token>")
 .BuildServiceProvider();
 
+// resolved as singleton instance
 var client = serviceProvider.GetRequiredService<IArtifactsMMOClient>();
+// For non-DI
+// IArtifactsMMOClient client = new ArtifactsMMOClient(new HttpClient(), "<your token>");
 
 var serverStatus = await client.GetStatusAsync();
 
