@@ -32,7 +32,7 @@ var serviceProvider = new ServiceCollection()
 .AddArtifactsMMOClient("<your token>")
 .BuildServiceProvider();
 
-// resolved as singleton instance
+// Resolved as singleton instance
 var client = serviceProvider.GetRequiredService<IArtifactsMMOClient>();
 // For non-DI
 // IArtifactsMMOClient client = new ArtifactsMMOClient(new HttpClient(), "<your token>");
@@ -77,6 +77,20 @@ else
         await client.Characters.CreateAsync(new CreateCharacterRequest("<your desired character name>", SkinCode.Men3));
     }
 }
+```
+
+Assets client:
+
+```csharp
+var serviceProvider = new ServiceCollection()
+.AddArtifactsMMOAssetsClient()
+.BuildServiceProvider();
+
+var assetsClient = serviceProvider.GetRequiredService<IArtifactsMMOAssetsClient>();
+
+Stream assetStream = await assetsClient.GetAssetAsync(AssetType.Characters, "men3");
+
+// Handle assets stream
 ```
 
 ## Contributing
