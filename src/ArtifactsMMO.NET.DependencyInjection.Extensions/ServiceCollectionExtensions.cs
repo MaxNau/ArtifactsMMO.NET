@@ -1,4 +1,4 @@
-﻿using ArtifactsMMO.NET.Endpoints.Accounts;
+﻿using ArtifactsMMO.NET.Endpoints.Assets;
 using ArtifactsMMO.NET.Endpoints.Token;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -7,8 +7,19 @@ using System.Net.Http;
 
 namespace ArtifactsMMO.NET.DependencyInjection.Extensions
 {
+    /// <summary>
+    /// Provides extension methods for <see cref="IServiceCollection"/> to register
+    /// clients for interacting with the Artifacts MMO services.
+    /// </summary>
     public static class ServiceCollectionExtensions
     {
+        /// <summary>
+        /// Adds the <see cref="ArtifactsMMOClient"/> to the service collection.
+        /// </summary>
+        /// <param name="services">The service collection to which the client will be added.</param>
+        /// <param name="apiKey">The API key required for authenticating requests.</param>
+        /// <returns>The updated <see cref="IServiceCollection"/>.</returns>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="apiKey"/> is null or whitespace.</exception>
         public static IServiceCollection AddArtifactsMMOClient(this IServiceCollection services, string apiKey)
         {
             if (string.IsNullOrWhiteSpace(apiKey))
@@ -22,6 +33,11 @@ namespace ArtifactsMMO.NET.DependencyInjection.Extensions
             return services;
         }
 
+        /// <summary>
+        /// Adds the <see cref="ArtifactsMMOTokenClient"/> to the service collection.
+        /// </summary>
+        /// <param name="services">The service collection to which the client will be added.</param>
+        /// <returns>The updated <see cref="IServiceCollection"/>.</returns>
         public static IServiceCollection AddArtifactsMMOAccountsClient(this IServiceCollection services)
         {
             var client = CreateAndConfigureHttpClient();
@@ -30,10 +46,28 @@ namespace ArtifactsMMO.NET.DependencyInjection.Extensions
             return services;
         }
 
+        /// <summary>
+        /// Adds the <see cref="ArtifactsMMOTokenClient"/> to the service collection.
+        /// </summary>
+        /// <param name="services">The service collection to which the client will be added.</param>
+        /// <returns>The updated <see cref="IServiceCollection"/>.</returns>
         public static IServiceCollection AddArtifactsMMOTokenClient(this IServiceCollection services)
         {
             var client = CreateAndConfigureHttpClient();
             services.AddSingleton<IArtifactsMMOTokenClient>(new ArtifactsMMOTokenClient(client));
+
+            return services;
+        }
+
+        /// <summary>
+        /// Adds the <see cref="ArtifactsMMOAssetsClient"/> to the service collection.
+        /// </summary>
+        /// <param name="services">The service collection to which the client will be added.</param>
+        /// <returns>The updated <see cref="IServiceCollection"/>.</returns>
+        public static IServiceCollection AddArtifactsMMOAssetsClient(this IServiceCollection services)
+        {
+            var client = CreateAndConfigureHttpClient();
+            services.AddSingleton<IArtifactsMMOAssetsClient>(new ArtifactsMMOAssetsClient(client));
 
             return services;
         }
