@@ -22,6 +22,24 @@ The client includes built-in error handling for various scenarios, such as:
 
 For detailed error information, check the ApiError object returned in case of unexpected exceptions.
 
+## Installation
+
+Install ArtifactsMMO.NET DI Extensions that includes ArtifactsMMO.NET
+
+[![NuGet](https://img.shields.io/nuget/v/ArtifactsMMO.NET.DependencyInjection.Extensions.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/ArtifactsMMO.NET.DependencyInjection.Extensions/)
+
+```bash
+dotnet add package ArtifactsMMO.NET.DependencyInjection.Extensions
+```
+
+Alternatively, you can install ArtifactsMMO.NET separately:
+
+[![NuGet](https://img.shields.io/nuget/v/ArtifactsMMO.NET.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/ArtifactsMMO.NET/)
+
+```bash
+dotnet add package ArtifactsMMO.NET
+```
+
 ## Usage
 
 Core client:
