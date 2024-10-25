@@ -1,6 +1,7 @@
 name: Build ArtifactsMMO.NET
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'src/ArtifactsMMO.NET/**'
