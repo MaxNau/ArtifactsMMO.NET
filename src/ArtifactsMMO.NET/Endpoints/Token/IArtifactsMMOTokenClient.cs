@@ -8,7 +8,7 @@ namespace ArtifactsMMO.NET.Endpoints.Token
     /// <summary>
     /// Provides methods for managing authentication tokens.
     /// </summary>
-    public interface IToken
+    public interface IArtifactsMMOTokenClient
     {
         /// <summary>
         /// Use your account as HTTPBasic Auth to generate your token to use the API.

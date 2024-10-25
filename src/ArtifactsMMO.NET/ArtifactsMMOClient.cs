@@ -1,5 +1,4 @@
 ﻿using ArtifactsMMO.NET.Endpoints;
-using ArtifactsMMO.NET.Endpoints.Accounts;
 using ArtifactsMMO.NET.Endpoints.Achievements;
 using ArtifactsMMO.NET.Endpoints.Characters;
 using ArtifactsMMO.NET.Endpoints.Events;
@@ -9,9 +8,9 @@ using ArtifactsMMO.NET.Endpoints.Leaderboard;
 using ArtifactsMMO.NET.Endpoints.Maps;
 using ArtifactsMMO.NET.Endpoints.Monsters;
 using ArtifactsMMO.NET.Endpoints.MyAccount;
+using ArtifactsMMO.NET.Endpoints.MyCharacters;
 using ArtifactsMMO.NET.Endpoints.Resources;
 using ArtifactsMMO.NET.Endpoints.Tasks;
-using ArtifactsMMO.NET.Endpoints.Token;
 using ArtifactsMMO.NET.Exceptions;
 using ArtifactsMMO.NET.Objects;
 using ArtifactsMMO.NET.Objects.Server;
@@ -39,7 +38,6 @@ namespace ArtifactsMMO.NET
         {
             Maps = new Maps(httpClient, apiKey);
             Monsters = new Monsters(httpClient, apiKey);
-            Accounts = new Accounts(httpClient, apiKey);
             MyAccount = new MyAccount(httpClient, apiKey);
             Achievements = new Achievements(httpClient, apiKey);
             Items = new Items(httpClient, apiKey);
@@ -49,7 +47,7 @@ namespace ArtifactsMMO.NET
             Events = new Events(httpClient, apiKey);
             Leaderboard = new Leaderboard(httpClient, apiKey);
             Resources = new Resources(httpClient, apiKey);
-            Token = new Token(httpClient, apiKey);
+            MyCharacters = new MyCharacters(httpClient, apiKey);
         }
 
         /// <summary>
@@ -81,11 +79,6 @@ namespace ArtifactsMMO.NET
         /// <inheritdoc/>
         /// </summary>
         public IMonsters Monsters { get; }
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        public IAccounts Accounts { get; }
 
         /// <summary>
         /// <inheritdoc/>
@@ -135,6 +128,6 @@ namespace ArtifactsMMO.NET
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        public IToken Token { get; }
+        public IMyCharacters MyCharacters { get; }
     }
 }

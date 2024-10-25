@@ -1,8 +1,10 @@
 ﻿using ArtifactsMMO.NET.Errors;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,6 +20,7 @@ namespace ArtifactsMMO.NET.Http
     public class RestClient : IRestClient, IDisposable
     {
         private readonly HttpClient _httpClient;
+        private readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower };
 
         private bool _disposedValue;
 
@@ -27,7 +30,8 @@ namespace ArtifactsMMO.NET.Http
         /// <param name="httpClient">The <see cref="HttpClient"/> to be used for making requests.</param>
         public RestClient(HttpClient httpClient)
         {
-            _httpClient = httpClient;
+            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            _jsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.SnakeCaseLower));
             FixBaseAddress(_httpClient);
         }
 
@@ -46,6 +50,14 @@ namespace ArtifactsMMO.NET.Http
         {
             var response = await _httpClient.GetAsync(requestUri).ConfigureAwait(false);
             return await GetResponseContentAsync<T>(response).ConfigureAwait(false);
+        }
+
+        async Task<Stream> IRestClient.GetAsStreamAsync(string requestUri, CancellationToken cancellationToken)
+        {
+            var response = await _httpClient.GetAsync(requestUri, cancellationToken).ConfigureAwait(false);
+
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         }
 
         async Task<(T result, ApiError error)> IRestClient.PostAsync<T>(string requestUri, HttpContent content, CancellationToken cancellationToken)
@@ -121,7 +133,7 @@ namespace ArtifactsMMO.NET.Http
                 return default;
             }
 
-            var result = JsonSerializer.Deserialize<T>(contentAsString, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower });
+            var result = JsonSerializer.Deserialize<T>(contentAsString, _jsonSerializerOptions);
             return (result, default);
         }
 

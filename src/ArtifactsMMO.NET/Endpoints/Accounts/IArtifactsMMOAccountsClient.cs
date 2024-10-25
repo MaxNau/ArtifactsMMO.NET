@@ -9,7 +9,7 @@ namespace ArtifactsMMO.NET.Endpoints.Accounts
     /// <summary>
     /// Provides methods for creating accounts.
     /// </summary>
-    public interface IAccounts
+    public interface IArtifactsMMOAccountsClient
     {
         /// <summary>
         /// Create an account.

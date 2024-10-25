@@ -1,5 +1,4 @@
-﻿using ArtifactsMMO.NET.Endpoints.Accounts;
-using ArtifactsMMO.NET.Endpoints.Achievements;
+﻿using ArtifactsMMO.NET.Endpoints.Achievements;
 using ArtifactsMMO.NET.Endpoints.Characters;
 using ArtifactsMMO.NET.Endpoints.Events;
 using ArtifactsMMO.NET.Endpoints.GrandExchange;
@@ -10,11 +9,11 @@ using ArtifactsMMO.NET.Endpoints.Monsters;
 using ArtifactsMMO.NET.Endpoints.MyAccount;
 using ArtifactsMMO.NET.Endpoints.Resources;
 using ArtifactsMMO.NET.Endpoints.Tasks;
-using ArtifactsMMO.NET.Endpoints.Token;
 using ArtifactsMMO.NET.Exceptions;
 using ArtifactsMMO.NET.Objects.Server;
 using System.Threading.Tasks;
 using System.Threading;
+using ArtifactsMMO.NET.Endpoints.MyCharacters;
 
 namespace ArtifactsMMO.NET
 {
@@ -46,11 +45,6 @@ namespace ArtifactsMMO.NET
         /// Provides access to monster-related functionality.
         /// </summary>
         IMonsters Monsters { get; }
-
-        /// <summary>
-        /// Provides access to account-related functionality for account management.
-        /// </summary>
-        IAccounts Accounts { get; }
 
         /// <summary>
         /// Provides access to functionality specific to the authenticated user's account.
@@ -98,8 +92,8 @@ namespace ArtifactsMMO.NET
         IResources Resources { get; }
 
         /// <summary>
-        /// Provides access to token management functionality.
+        /// Provides access to character actions.
         /// </summary>
-        IToken Token { get; }
+        IMyCharacters MyCharacters { get; }
     }
 }

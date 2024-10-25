@@ -10,6 +10,8 @@ using ArtifactsMMO.NET.Requests;
 using System.Text.Json;
 using ArtifactsMMO.NET.Errors;
 using ArtifactsMMO.NET.Exceptions;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.Endpoints
 {
@@ -27,7 +29,22 @@ namespace ArtifactsMMO.NET.Endpoints
         private readonly QueryStringBuilder _queryStringBuilder;
         private readonly ArtifactsMMOApiErrorFactory _errorFactory;
         private readonly JsonSerializerOptions _jsonSerializerOptions = 
-            new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower };
+            new JsonSerializerOptions {
+                PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            };
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ArtifactsMMOEndpoint"/> class.
+        /// </summary>
+        /// <param name="httpClient">The <see cref="HttpClient"/> used for making HTTP requests to the API.</param>
+        internal ArtifactsMMOEndpoint(HttpClient httpClient) : base(httpClient)
+        {
+            _queryStringBuilder = new QueryStringBuilder();
+            _errorFactory = new ArtifactsMMOApiErrorFactory();
+            SetBaseAddress();
+            SetUserAgent();
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ArtifactsMMOEndpoint"/> class.
@@ -40,6 +57,11 @@ namespace ArtifactsMMO.NET.Endpoints
         /// </remarks>
         public ArtifactsMMOEndpoint(HttpClient httpClient, string apiKey) : base(httpClient)
         {
+            if (string.IsNullOrWhiteSpace(apiKey))
+            {
+                throw new ArgumentNullException(nameof(apiKey));
+            }
+
             _queryStringBuilder = new QueryStringBuilder();
             _errorFactory = new ArtifactsMMOApiErrorFactory();
             SetBaseAddress();
@@ -56,7 +78,7 @@ namespace ArtifactsMMO.NET.Endpoints
                 throw new ApiException(error.StatusCode, error.ReasonPhrase, error.ContentAsString);
             }
 
-            return result.Data;
+            return result != null ? result.Data : default;
         }
 
         internal async Task<(T result, E? error)> GetAsync<T, E>(string resource,
@@ -65,7 +87,7 @@ namespace ArtifactsMMO.NET.Endpoints
             var (result, error) = await Self.GetAsync<Response<T>>(resource, cancellationToken).ConfigureAwait(false);
 
             var errorCode = _errorFactory.Get<E>(error);
-            return (result.Data, errorCode);
+            return (result != null ? result.Data : default, errorCode);
         }
 
         internal async Task<PagedResponse<T>> GetAsync<T>(string resource, IQueryString query,
@@ -93,12 +115,12 @@ namespace ArtifactsMMO.NET.Endpoints
         internal async Task<(T result, E? error)> PostAsync<T, E>(string resource, IRequest request, CancellationToken cancellationToken = default) where E : struct, Enum
         {
             var body = JsonSerializer.Serialize(request, _jsonSerializerOptions);
-            using (var httpContent = new StringContent(body))
+            using (var httpContent = new StringContent(body, Encoding.UTF8, "application/json"))
             {
                 var (result, error) = await Self.PostAsync<Response<T>>(resource, httpContent, cancellationToken).ConfigureAwait(false);
 
                 var errorCode = _errorFactory.Get<E>(error);
-                return (result.Data, errorCode);
+                return (result != null ? result.Data : default, errorCode);
             }
         }
 
@@ -108,6 +130,11 @@ namespace ArtifactsMMO.NET.Endpoints
             {
                 BaseAddress = _baseUri;
             }
+        }
+
+        private void SetUserAgent()
+        {
+            AddDefaultRequestHeader("User-Agent", $"ArtifactsMMO.NET/{VersionHelper.Version}");
         }
     }
 }
