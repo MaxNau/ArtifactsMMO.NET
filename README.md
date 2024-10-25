@@ -22,10 +22,62 @@ The client includes built-in error handling for various scenarios, such as:
 
 For detailed error information, check the ApiError object returned in case of unexpected exceptions.
 
+## Usage
+
+Using ArtifactsMMO.NET.DependencyInjection.Extensions
+
+```csharp
+var serviceProvider = new ServiceCollection()
+.AddArtifactsMMOClient("<your token>")
+.BuildServiceProvider();
+
+var client = serviceProvider.GetRequiredService<IArtifactsMMOClient>();
+
+var serverStatus = await client.GetStatusAsync();
+
+// Get your character
+var (character, error) = await client.Characters.GetAsync("<your character name>");
+
+// Check if there any error
+if (error == null)
+{
+    // Move your character
+    var (characterMoveData, moveError) = await client.MyCharacters.MoveAsync(character.Name, new MoveRequest(1, 1));
+
+    // Check for error
+    if (moveError == null)
+    {
+        var (fightData, fightError) = await client.MyCharacters.FightAsync(characterMoveData.Character.Name);
+    }
+    else
+    {
+        // Handle error
+        switch (moveError.Value)
+        {
+            // Character is in cooldown
+            case MoveError.CharacterInCooldown:
+                // Wait for cooldown expiration
+                await Task.Delay((characterMoveData.Cooldown.StartedAt - characterMoveData.Cooldown.Expiration).Microseconds);
+                // Repeat the action
+                await client.MyCharacters.MoveAsync(character.Name, new MoveRequest(1, 1));
+                break;
+
+        }
+    }
+}
+else
+{
+    if (error == GetCharacterError.CharacterNotFound)
+    {
+        // Create new character
+        await client.Characters.CreateAsync(new CreateCharacterRequest("<your desired character name>", SkinCode.Men3));
+    }
+}
+```
+
 ## Contributing
 
 Contributions are welcome! If you encounter any issues or want to add features, feel free to open an issue or submit a pull request.
-
 
 ## License
 
