@@ -93,6 +93,25 @@ Stream assetStream = await assetsClient.GetAssetAsync(AssetType.Characters, "men
 // Handle assets stream
 ```
 
+Accounts and Token clients:
+
+```csharp
+var serviceProvider = new ServiceCollection()
+.AddArtifactsMMOAccountsClient()
+.AddArtifactsMMOTokenClient()
+.BuildServiceProvider();
+            
+var accountsClient = serviceProvider.GetRequiredService<IArtifactsMMOAccountsClient>();
+var tokenClient = serviceProvider.GetRequiredService<IArtifactsMMOTokenClient>();
+
+var username = "<your username>";
+var password = "<your password>";
+var email = "<your email>";
+
+await accountsClient.CreateAccountAsync(new CreateAccountRequest(username, password, email));
+var token = tokenClient.GenerateTokenAsync(username, password);
+```
+
 ## Contributing
 
 Contributions are welcome! If you encounter any issues or want to add features, feel free to open an issue or submit a pull request.
