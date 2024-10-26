@@ -8,12 +8,12 @@ namespace ArtifactsMMO.NET.Validators
     {
         public void Validate(ItemsQuery itemsQuery)
         {
-            if (!AlphaNumericUnderscoreHyphenValidator.IsValid(itemsQuery.CraftMaterial))
+            if (itemsQuery.CraftMaterial != null && !AlphaNumericUnderscoreHyphenValidator.IsValid(itemsQuery.CraftMaterial))
             {
                 throw new InvalidQueryParameter(nameof(itemsQuery.CraftMaterial), "Allowed values include letters (a-z, A-Z), digits (0-9), underscores (_), and hyphens (-), with no spaces or special characters.");
             }
 
-            if (!AlphaNumericUnderscoreHyphenValidator.IsValid(itemsQuery.Name))
+            if (itemsQuery.Name != null && !AlphaNumericUnderscoreHyphenValidator.IsValid(itemsQuery.Name))
             {
                 throw new InvalidQueryParameter(nameof(itemsQuery.Name), "Allowed values include letters (a-z, A-Z), digits (0-9), underscores (_), and hyphens (-), with no spaces or special characters.");
             }
