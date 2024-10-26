@@ -45,7 +45,7 @@ jobs:
         fi
         
     - name: Restore dependencies
-      run: dotnet restore ./src/ArtifactsMMO.NET/ArtifactsMMO.NETT.csproj
+      run: dotnet restore ./src/ArtifactsMMO.NET/ArtifactsMMO.NET.csproj
       
     - name: Build
       run: dotnet build ./src/ArtifactsMMO.NET/ArtifactsMMO.NET.csproj --no-restore --configuration Release
