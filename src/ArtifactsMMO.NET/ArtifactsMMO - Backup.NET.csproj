@@ -13,7 +13,6 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/MaxNau/ArtifactsMMO.NET</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/MaxNau/ArtifactsMMO.NET</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
