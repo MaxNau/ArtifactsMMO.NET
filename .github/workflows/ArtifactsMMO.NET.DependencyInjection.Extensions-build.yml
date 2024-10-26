@@ -1,0 +1,32 @@
+name: Build ArtifactsMMO.NET.DependencyInjection.Extensions
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'src/ArtifactsMMO.NET.DependencyInjection.Extensions/**'
+      - 'README.md'
+      - 'LICENSE'
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore ./src/ArtifactsMMO.NET.DependencyInjection.Extensions/ArtifactsMMO.NET.DependencyInjection.Extensions.csproj
+      
+    - name: Build
+      run: dotnet build ./src/ArtifactsMMO.NET.DependencyInjection.Extensions/ArtifactsMMO.NET.DependencyInjection.Extensions.csproj --no-restore --configuration Release
+    - name: Test
+      run: dotnet test ./src/ArtifactsMMO.NET.DependencyInjection.Extensions/ArtifactsMMO.NET.DependencyInjection.Extensions.csproj --no-build --configuration Release --verbosity normal
