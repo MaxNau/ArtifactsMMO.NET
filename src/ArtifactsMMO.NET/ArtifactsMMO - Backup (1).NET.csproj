@@ -14,7 +14,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/MaxNau/ArtifactsMMO.NET</PackageProjectUrl>
     <RepositoryUrl>https://github.com/MaxNau/ArtifactsMMO.NET</RepositoryUrl>
-    <PackageTags>ArtifactsMMO;mmo;api-client;game</PackageTags>
+    <PackageTags>ArtifactsMMO;MMO</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
