@@ -8,7 +8,7 @@ namespace ArtifactsMMO.NET.Validators
     {
         public void Validate(ResourcesQuery resourcesQuery)
         {
-            if (!AlphaNumericUnderscoreHyphenValidator.IsValid(resourcesQuery.Drop))
+            if (resourcesQuery.Drop != null && !AlphaNumericUnderscoreHyphenValidator.IsValid(resourcesQuery.Drop))
             {
                 throw new InvalidQueryParameter(nameof(resourcesQuery.Drop), "Allowed values include letters (a-z, A-Z), digits (0-9), underscores (_), and hyphens (-), with no spaces or special characters.");
             }
