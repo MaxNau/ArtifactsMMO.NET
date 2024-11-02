@@ -1,6 +1,7 @@
 ﻿using ArtifactsMMO.NET.Enums.ErrorCodes.Accounts;
 using ArtifactsMMO.NET.Exceptions;
 using ArtifactsMMO.NET.Requests;
+using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,8 +29,14 @@ namespace ArtifactsMMO.NET.Endpoints.Accounts
         /// <returns>A task representing the asynchronous operation.
         /// The task result contains an optional <see cref="CreateAccountError"/> that indicates any error that occurred during account creation.</returns>
         /// <exception cref="ApiException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
         public async Task<CreateAccountError?> CreateAccountAsync(CreateAccountRequest createAccountRequest, CancellationToken cancellationToken = default)
         {
+            if (createAccountRequest == null)
+            {
+                throw new ArgumentNullException(nameof(createAccountRequest));
+            }
+
             var (_, error) = await PostAsync<string, CreateAccountError>("accounts/create", createAccountRequest, cancellationToken).ConfigureAwait(false);
             return error;
         }

@@ -37,8 +37,19 @@ namespace ArtifactsMMO.NET.Endpoints.Token
         /// <returns>A task representing the asynchronous operation.
         /// The task result contains a tuple with the generated token as a <see cref="string"/> and an optional <see cref="GenerateTokenError"/> indicating any error that occurred during token generation.</returns>
         /// <exception cref="ApiException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
         public async Task<(string token, GenerateTokenError? error)> GenerateTokenAsync(string username, string password, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                throw new ArgumentNullException(nameof(username));
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new ArgumentNullException(nameof(password));
+            }
+            
             var base64Credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{username}:{password}"));
             var headers = new Dictionary<string, string> { { "Authorization", $"Basic {base64Credentials}" } };
             var (result, error) = await Self.PostAsync<ApiToken>("token", headers, cancellationToken).ConfigureAwait(false);

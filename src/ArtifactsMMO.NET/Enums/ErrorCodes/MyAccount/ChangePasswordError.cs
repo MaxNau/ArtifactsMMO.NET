@@ -9,5 +9,10 @@
         /// Use a different password.
         /// </summary>
         PasswordInUse = 458,
+
+        /// <summary>
+        /// The current password is invalid.
+        /// </summary>
+        CurrentPasswordIsInvalid = 459
     }
 }

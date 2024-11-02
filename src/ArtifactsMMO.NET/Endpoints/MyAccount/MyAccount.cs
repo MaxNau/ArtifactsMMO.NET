@@ -4,7 +4,7 @@ using ArtifactsMMO.NET.Objects.Items;
 using ArtifactsMMO.NET.Objects.MyAccount;
 using ArtifactsMMO.NET.Queries;
 using ArtifactsMMO.NET.Requests;
-using ArtifactsMMO.NET.Validators;
+using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,8 +13,6 @@ namespace ArtifactsMMO.NET.Endpoints.MyAccount
 {
     internal class MyAccount : ArtifactsMMOEndpoint, IMyAccount
     {
-        private static readonly IValidator<string> _validator = new PasswordFormatValidator();
-
         public MyAccount(HttpClient httpClient, string apiKey) : base(httpClient, apiKey)
         {
         }
@@ -29,11 +27,19 @@ namespace ArtifactsMMO.NET.Endpoints.MyAccount
             return await GetAsync<SimpleItem>("my/bank/items", bankItemsQuery, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<ChangePasswordError?> ChangePasswordAsync(string password, CancellationToken cancellationToken = default)
+        public async Task<AccountDetails> GetAccountDetailsAsync(CancellationToken cancellationToken = default)
         {
-            _validator.Validate(password);
+            return await GetAsync<AccountDetails>("my/details", cancellationToken).ConfigureAwait(false);
+        }
 
-            var (_, error) = await PostAsync<string, ChangePasswordError>("my/change_password", new PasswordResetRequest(password), cancellationToken).ConfigureAwait(false);
+        public async Task<ChangePasswordError?> ChangePasswordAsync(ChangePasswordRequest changePasswordRequest, CancellationToken cancellationToken = default)
+        {
+            if (changePasswordRequest == null)
+            {
+                throw new ArgumentNullException(nameof(changePasswordRequest));
+            }
+
+            var (_, error) = await PostAsync<string, ChangePasswordError>("my/change_password", changePasswordRequest, cancellationToken).ConfigureAwait(false);
             return error;
         }
     }

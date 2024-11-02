@@ -19,6 +19,7 @@ namespace ArtifactsMMO.NET.Endpoints.Accounts
         /// <returns>A task representing the asynchronous operation.
         /// The task result contains an optional <see cref="CreateAccountError"/> that indicates any error that occurred during account creation.</returns>
         /// <exception cref="ApiException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
         Task<CreateAccountError?> CreateAccountAsync(CreateAccountRequest createAccountRequest, CancellationToken cancellationToken = default);
     }
 

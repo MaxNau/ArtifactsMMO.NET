@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using ArtifactsMMO.NET.Enums.ErrorCodes.MyAccount;
 using ArtifactsMMO.NET.Exceptions;
+using ArtifactsMMO.NET.Requests;
 
 namespace ArtifactsMMO.NET.Endpoints.MyAccount
 {
@@ -32,12 +33,20 @@ namespace ArtifactsMMO.NET.Endpoints.MyAccount
         Task<PagedResponse<SimpleItem>> GetBankItemsAsync(BankItemsQuery bankItemsQuery, CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Fetch account details.
+        /// </summary>
+        /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
+        /// <returns>A task representing the asynchronous operation, containing the <see cref="AccountDetails"/>.</returns>
+        /// <exception cref="ApiException"></exception>
+        Task<AccountDetails> GetAccountDetailsAsync(CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Change your account password. Changing the password reset the account token.
         /// </summary>
-        /// <param name="password">The new password to set for the account.</param>
+        /// <param name="changePasswordRequest">Request to set a new password. Current password must be provided as well.</param>
         /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
         /// <returns>A task representing the asynchronous operation, containing an optional <see cref="ChangePasswordError"/>.</returns>
         /// <exception cref="ApiException"></exception>
-        Task<ChangePasswordError?> ChangePasswordAsync(string password, CancellationToken cancellationToken = default);
+        Task<ChangePasswordError?> ChangePasswordAsync(ChangePasswordRequest changePasswordRequest, CancellationToken cancellationToken = default);
     }
 }
