@@ -7,6 +7,7 @@ using ArtifactsMMO.NET.Requests;
 using System.Threading.Tasks;
 using System.Threading;
 using ArtifactsMMO.NET.Exceptions;
+using System;
 
 namespace ArtifactsMMO.NET.Endpoints.Characters
 {
@@ -26,6 +27,7 @@ namespace ArtifactsMMO.NET.Endpoints.Characters
         /// <returns>A task representing the asynchronous operation.
         /// The task result contains a tuple with the <see cref="Character"/> created and an optional <see cref="CreateCharacterError"/>.</returns>
         /// <exception cref="ApiException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
         Task<(Character result, CreateCharacterError? error)> CreateAsync(CreateCharacterRequest createCharacterRequest, CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -36,6 +38,7 @@ namespace ArtifactsMMO.NET.Endpoints.Characters
         /// <returns>A task representing the asynchronous operation.
         /// The task result contains a tuple with the <see cref="Character"/> that was deleted and an optional <see cref="DeleteCharacterError"/>.</returns>
         /// <exception cref="ApiException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
         Task<(Character result, DeleteCharacterError? error)> DeleteAsync(DeleteCharacterRequest deleteCharacterRequest, CancellationToken cancellationToken = default);
 
         /// <summary>

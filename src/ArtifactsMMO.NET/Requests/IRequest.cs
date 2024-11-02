@@ -13,7 +13,7 @@ namespace ArtifactsMMO.NET.Requests
     [JsonDerivedType(typeof(EquipItemRequest))]
     [JsonDerivedType(typeof(UnequipItemReguest))]
     [JsonDerivedType(typeof(GrandExchangetemRequest))]
-    [JsonDerivedType(typeof(PasswordResetRequest))]
+    [JsonDerivedType(typeof(ChangePasswordRequest))]
     [JsonDerivedType(typeof(RecyclingRequest))]
     [JsonDerivedType(typeof(TaskTradeRequest))]
     [JsonDerivedType(typeof(WithdrawBankGoldRequest))]
