@@ -7,9 +7,9 @@
     <Authors>Maksym Naumov</Authors>
     <Description>Artifacts MMO client</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <VersionPrefix>2.4.0</VersionPrefix>
-    <FileVersion>2.4.0</FileVersion>
-    <AssemblyVersion>2.4.0</AssemblyVersion>
+    <VersionPrefix>2.4.1</VersionPrefix>
+    <FileVersion>2.4.1</FileVersion>
+    <AssemblyVersion>2.4.1</AssemblyVersion>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/MaxNau/ArtifactsMMO.NET</PackageProjectUrl>
