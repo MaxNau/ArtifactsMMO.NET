@@ -1,6 +1,7 @@
 ﻿using ArtifactsMMO.NET.Enums.ErrorCodes.Accounts;
 using ArtifactsMMO.NET.Exceptions;
 using ArtifactsMMO.NET.Requests;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,5 +23,4 @@ namespace ArtifactsMMO.NET.Endpoints.Accounts
         /// <exception cref="ArgumentNullException"></exception>
         Task<CreateAccountError?> CreateAccountAsync(CreateAccountRequest createAccountRequest, CancellationToken cancellationToken = default);
     }
-
 }

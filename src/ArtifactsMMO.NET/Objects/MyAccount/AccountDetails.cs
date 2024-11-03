@@ -53,7 +53,7 @@ namespace ArtifactsMMO.NET.Objects.MyAccount
         /// <summary>
         /// List of badges earned by the account.
         /// </summary>
-        public List<string> Badges { get; } = new List<string>();
+        public IReadOnlyCollection<object> Badges { get; } = new List<object>();
 
         /// <summary>
         /// Number of gems the account currently holds.
