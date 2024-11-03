@@ -31,7 +31,11 @@ namespace ArtifactsMMO.NET.Endpoints
         private readonly JsonSerializerOptions _jsonSerializerOptions = 
             new JsonSerializerOptions {
                 PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                Converters =
+                {
+                    new JsonStringEnumConverter(JsonNamingPolicy.SnakeCaseLower)
+                }
             };
 
         /// <summary>
