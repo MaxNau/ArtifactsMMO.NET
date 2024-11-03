@@ -5,7 +5,9 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArtifactsMMO.NET", "src\ArtifactsMMO.NET\ArtifactsMMO.NET.csproj", "{A2EFA1D8-4B1C-409D-805A-4BD05662AB1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtifactsMMO.NET.DependencyInjection.Extensions", "src\ArtifactsMMO.NET.DependencyInjection.Extensions\ArtifactsMMO.NET.DependencyInjection.Extensions.csproj", "{037F00AD-0628-4BDD-9EA3-5AED2C148B72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArtifactsMMO.NET.DependencyInjection.Extensions", "src\ArtifactsMMO.NET.DependencyInjection.Extensions\ArtifactsMMO.NET.DependencyInjection.Extensions.csproj", "{037F00AD-0628-4BDD-9EA3-5AED2C148B72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtifactsMMO.NET.Tests", "tests\ArtifactsMMO.NET.Tests\ArtifactsMMO.NET.Tests.csproj", "{8CBA9E55-D93B-4733-A786-2AA6C5BAD852}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{037F00AD-0628-4BDD-9EA3-5AED2C148B72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{037F00AD-0628-4BDD-9EA3-5AED2C148B72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{037F00AD-0628-4BDD-9EA3-5AED2C148B72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CBA9E55-D93B-4733-A786-2AA6C5BAD852}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CBA9E55-D93B-4733-A786-2AA6C5BAD852}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CBA9E55-D93B-4733-A786-2AA6C5BAD852}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CBA9E55-D93B-4733-A786-2AA6C5BAD852}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

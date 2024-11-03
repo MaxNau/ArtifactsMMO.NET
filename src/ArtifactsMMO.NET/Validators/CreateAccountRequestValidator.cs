@@ -27,7 +27,12 @@ namespace ArtifactsMMO.NET.Validators
 
             if (createAccountRequest.Password.Any(char.IsWhiteSpace))
             {
-                throw new ArgumentException("Password must not contain whitespace characters.");
+                throw new InvalidRequestParameter(nameof(createAccountRequest.Password), "Password must not contain whitespace characters.");
+            }
+
+            if (!EmailValidator.IsValidEmail(createAccountRequest.Email))
+            {
+                throw new InvalidRequestParameter(nameof(createAccountRequest.Password), "Email is invalid.");
             }
         }
     }
