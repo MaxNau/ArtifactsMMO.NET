@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using ArtifactsMMO.NET.Enums;
+using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.Objects.Maps
 {
@@ -19,7 +20,7 @@ namespace ArtifactsMMO.NET.Objects.Maps
         /// <summary>
         /// Type of the content.
         /// </summary>
-        public string Type { get; }
+        public MapContentType Type { get; }
 
         /// <summary>
         /// Code of the content.
