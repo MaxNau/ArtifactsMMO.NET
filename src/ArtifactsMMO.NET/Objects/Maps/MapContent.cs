@@ -11,7 +11,7 @@ namespace ArtifactsMMO.NET.Objects.Maps
         internal MapContent() { }
 
         [JsonConstructor]
-        internal MapContent(string type, string code)
+        internal MapContent(MapContentType type, string code)
         {
             Type = type;
             Code = code;
