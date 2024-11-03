@@ -1,4 +1,5 @@
-﻿using ArtifactsMMO.NET.Endpoints.Assets;
+﻿using ArtifactsMMO.NET.Endpoints.Accounts;
+using ArtifactsMMO.NET.Endpoints.Assets;
 using ArtifactsMMO.NET.Endpoints.Token;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -41,7 +42,7 @@ namespace ArtifactsMMO.NET.DependencyInjection.Extensions
         public static IServiceCollection AddArtifactsMMOAccountsClient(this IServiceCollection services)
         {
             var client = CreateAndConfigureHttpClient();
-            services.AddSingleton<IArtifactsMMOTokenClient>(new ArtifactsMMOTokenClient(client));
+            services.AddSingleton<IArtifactsMMOAccountsClient>(new ArtifactsMMOAccountsClient(client));
 
             return services;
         }

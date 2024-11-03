@@ -5,7 +5,7 @@ namespace ArtifactsMMO.NET.Internal
 {
     internal sealed class QueryStringBuilder
     {
-        private StringBuilder _queryBuilder;
+        private readonly StringBuilder _queryBuilder;
 
         public QueryStringBuilder()
         {

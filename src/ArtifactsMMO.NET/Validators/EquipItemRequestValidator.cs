@@ -25,7 +25,7 @@ namespace ArtifactsMMO.NET.Validators
             {
                 if (equipItemRequest.Quantity.HasValue && !ItemQuantityValidator.IsValid(equipItemRequest.Quantity.Value))
                 {
-                    new DisallowedItemQuantity();
+                    throw new DisallowedItemQuantity();
                 }
             }
         }

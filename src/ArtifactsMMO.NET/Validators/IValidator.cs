@@ -1,6 +1,6 @@
 ﻿namespace ArtifactsMMO.NET.Validators
 {
-    internal interface IValidator<T>
+    internal interface IValidator<in T>
     {
         void Validate(T value);
     }

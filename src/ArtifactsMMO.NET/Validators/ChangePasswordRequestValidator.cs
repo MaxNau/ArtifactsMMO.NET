@@ -1,6 +1,7 @@
 ﻿using ArtifactsMMO.NET.Exceptions;
 using ArtifactsMMO.NET.Requests;
 using System;
+using System.Linq;
 
 namespace ArtifactsMMO.NET.Validators
 {
@@ -38,14 +39,11 @@ namespace ArtifactsMMO.NET.Validators
             }
         }
 
-        private void ValidatePassword(string password)
+        private static void ValidatePassword(string password)
         {
-            foreach (char c in password)
+            if (password.Any(char.IsWhiteSpace))
             {
-                if (char.IsWhiteSpace(c))
-                {
-                    throw new ArgumentException("Password must not contain whitespace characters.");
-                }
+                throw new ArgumentException("Password must not contain whitespace characters.");
             }
         }
     }

@@ -35,7 +35,7 @@ namespace ArtifactsMMO.NET.Queries
         {
             ItemCode = itemCode;
 
-            _validator.Equals(itemCode);
+            _validator.Validate(this);
         }
 
         /// <summary>

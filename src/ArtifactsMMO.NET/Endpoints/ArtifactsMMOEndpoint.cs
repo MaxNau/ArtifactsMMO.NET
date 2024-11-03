@@ -26,7 +26,6 @@ namespace ArtifactsMMO.NET.Endpoints
     public abstract class ArtifactsMMOEndpoint : RestClient
     {
         private readonly Uri _baseUri = new Uri("https://api.artifactsmmo.com/");
-        private readonly QueryStringBuilder _queryStringBuilder;
         private readonly ArtifactsMMOApiErrorFactory _errorFactory;
         private readonly JsonSerializerOptions _jsonSerializerOptions = 
             new JsonSerializerOptions {
@@ -42,9 +41,8 @@ namespace ArtifactsMMO.NET.Endpoints
         /// Initializes a new instance of the <see cref="ArtifactsMMOEndpoint"/> class.
         /// </summary>
         /// <param name="httpClient">The <see cref="HttpClient"/> used for making HTTP requests to the API.</param>
-        internal ArtifactsMMOEndpoint(HttpClient httpClient) : base(httpClient)
+        private protected ArtifactsMMOEndpoint(HttpClient httpClient) : base(httpClient)
         {
-            _queryStringBuilder = new QueryStringBuilder();
             _errorFactory = new ArtifactsMMOApiErrorFactory();
             SetBaseAddress();
             SetUserAgent();
@@ -59,14 +57,13 @@ namespace ArtifactsMMO.NET.Endpoints
         /// This constructor sets the base address for the API, initializes the query string builder,
         /// and adds the default request header for authorization using the provided API key.
         /// </remarks>
-        public ArtifactsMMOEndpoint(HttpClient httpClient, string apiKey) : base(httpClient)
+        protected ArtifactsMMOEndpoint(HttpClient httpClient, string apiKey) : base(httpClient)
         {
             if (string.IsNullOrWhiteSpace(apiKey))
             {
                 throw new ArgumentNullException(nameof(apiKey));
             }
 
-            _queryStringBuilder = new QueryStringBuilder();
             _errorFactory = new ArtifactsMMOApiErrorFactory();
             SetBaseAddress();
             AddDefaultRequestHeader("Authorization", $"Bearer {apiKey}");

@@ -2,6 +2,8 @@
 using ArtifactsMMO.NET.Requests;
 using ArtifactsMMO.NET.Validators.Static;
 using System;
+using System.Linq;
+
 namespace ArtifactsMMO.NET.Validators
 {
     internal class CreateAccountRequestValidator : IValidator<CreateAccountRequest>
@@ -23,12 +25,9 @@ namespace ArtifactsMMO.NET.Validators
                 throw new InvalidRequestParameter(nameof(createAccountRequest.Username), "Password must be between 5 and 50 characters long.");
             }
 
-            foreach (char c in createAccountRequest.Password)
+            if (createAccountRequest.Password.Any(char.IsWhiteSpace))
             {
-                if (char.IsWhiteSpace(c))
-                {
-                    throw new ArgumentException("Password must not contain whitespace characters.");
-                }
+                throw new ArgumentException("Password must not contain whitespace characters.");
             }
         }
     }
