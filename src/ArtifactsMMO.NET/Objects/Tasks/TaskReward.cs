@@ -10,12 +10,12 @@ namespace ArtifactsMMO.NET.Objects.Tasks
         internal TaskReward() { }
 
         [JsonConstructor]
-        internal TaskReward(string code, int minQuantity, int maxQuantity, double odds)
+        internal TaskReward(string code, int minQuantity, int maxQuantity, int rate)
         {
             Code = code;
             MinQuantity = minQuantity;
             MaxQuantity = maxQuantity;
-            Odds = odds;
+            Rate = rate;
         }
 
         /// <summary>
@@ -34,8 +34,8 @@ namespace ArtifactsMMO.NET.Objects.Tasks
         public int MaxQuantity { get; }
 
         /// <summary>
-        /// Item odds.
+        /// Chance rate. (1/rate)
         /// </summary>
-        public double Odds { get; }
+        public int Rate { get; }
     }
 }

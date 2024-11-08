@@ -6,24 +6,24 @@
     public enum GrandExchangeBuyItemError
     {
         /// <summary>
-        /// You can't buy or sell that many items at the same time.
+        /// Order not found.
         /// </summary>
-        ExcessiveQuantity = 479,
+        OrderNotFound = 404,
 
         /// <summary>
-        /// No stock for this item.
+        /// This offer does not contain as many items.
         /// </summary>
-        NoStock = 480,
+        InsufficientItems = 434,
 
         /// <summary>
-        /// No item at this price.
+        /// You can't buy to yourself.
         /// </summary>
-        NoItemAtPrice = 482,
+        CannotBuySelf = 435,
 
         /// <summary>
-        /// A transaction is already in progress on this item by a another character.
+        /// A transaction is already in progress on this order by a another character.
         /// </summary>
-        TransactionInProgress = 483,
+        TransactionInProgressByAnotherCharacter = 436,
 
         /// <summary>
         /// An action is already in progress by your character.
@@ -31,9 +31,9 @@
         ActionInProgress = 486,
 
         /// <summary>
-        /// Insufficient golds on your character.
+        /// Insufficient gold on your character.
         /// </summary>
-        InsufficientGoldsOnCharacter = 492,
+        InsufficientGoldOnCharacter = 492,
 
         /// <summary>
         /// Character inventory is full.

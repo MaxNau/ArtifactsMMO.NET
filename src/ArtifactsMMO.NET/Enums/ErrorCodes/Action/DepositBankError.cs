@@ -11,7 +11,7 @@
         ItemNotFound = 404,
 
         /// <summary>
-        /// A transaction is already in progress with this item/your golds in your bank.
+        /// A transaction is already in progress with this item/your gold in your bank.
         /// </summary>
         TransactionInProgress = 461,
 

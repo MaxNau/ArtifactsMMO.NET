@@ -41,6 +41,11 @@
         /// <summary>
         /// Cooking skill
         /// </summary>
-        Cooking
+        Cooking,
+
+        /// <summary>
+        /// Alchemy skill
+        /// </summary>
+        Alchemy
     }
 }

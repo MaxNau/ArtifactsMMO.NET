@@ -9,15 +9,20 @@ namespace ArtifactsMMO.NET.Endpoints.Leaderboard
 {
     internal class Leaderboard : ArtifactsMMOEndpoint, ILeaderboard
     {
-        private readonly string _resource = "leaderboard";
         public Leaderboard(HttpClient httpClient, string apiKey) : base(httpClient, apiKey)
         {
         }
 
-        public async Task<PagedResponse<CharacterLeaderboard>> GetAsync(LeaderboardQuery leaderboardQuery,
+        public async Task<PagedResponse<CharacterLeaderboard>> GetAsync(CharactersLeaderboardQuery leaderboardQuery,
             CancellationToken cancellationToken = default)
         {
-            return await GetAsync<CharacterLeaderboard>(_resource, leaderboardQuery, cancellationToken).ConfigureAwait(false);
+            return await GetAsync<CharacterLeaderboard>("leaderboard/characters", leaderboardQuery, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<PagedResponse<AccountLeaderboard>> GetAsync(AccountsLeaderboardQuery leaderboardQuery,
+            CancellationToken cancellationToken = default)
+        {
+            return await GetAsync<AccountLeaderboard>("leaderboard/accounts", leaderboardQuery, cancellationToken).ConfigureAwait(false);
         }
     }
 }

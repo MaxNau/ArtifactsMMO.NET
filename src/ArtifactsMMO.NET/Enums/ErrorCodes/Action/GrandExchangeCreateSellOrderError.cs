@@ -1,9 +1,9 @@
 ﻿namespace ArtifactsMMO.NET.Enums.ErrorCodes.Action
 {
     /// <summary>
-    /// Grand Exchange sell item action error codes
+    /// Grand Exchange create sell order action error codes
     /// </summary>
-    public enum GrandExchangeSellItemError
+    public enum GrandExchangeCreateSellOrderError
     {
         /// <summary>
         /// Item not found.
@@ -11,29 +11,24 @@
         ItemNotFound = 404,
 
         /// <summary>
+        /// You can't create more than 100 orders at the same time.
+        /// </summary>
+        OrderCreationLimit = 433,
+
+        /// <summary>
         /// Missing item or insufficient quantity.
         /// </summary>
         MissingItemOrInsufficientQuantity = 478,
 
         /// <summary>
-        /// You can't buy or sell that many items at the same time.
-        /// </summary>
-        ExcessiveQuantity = 479,
-
-        /// <summary>
-        /// No item at this price.
-        /// </summary>
-        NoItemAtPrice = 482,
-
-        /// <summary>
-        /// A transaction is already in progress on this item by a another character.
-        /// </summary>
-        TransactionInProgress = 483,
-
-        /// <summary>
         /// An action is already in progress by your character.
         /// </summary>
         ActionInProgress = 486,
+
+        /// <summary>
+        /// Insufficient gold on your character.
+        /// </summary>
+        InsufficientGoldOnCharacter = 492,
 
         /// <summary>
         /// Character not found.

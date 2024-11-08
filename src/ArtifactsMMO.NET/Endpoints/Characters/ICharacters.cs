@@ -1,5 +1,4 @@
 ﻿using ArtifactsMMO.NET.Enums.ErrorCodes.Character;
-using ArtifactsMMO.NET.Objects.Achievements;
 using ArtifactsMMO.NET.Objects.Characters;
 using ArtifactsMMO.NET.Objects;
 using ArtifactsMMO.NET.Queries;
@@ -60,16 +59,5 @@ namespace ArtifactsMMO.NET.Endpoints.Characters
         /// The task result contains a <see cref="PagedResponse{Character}"/> containing the filtered characters.</returns>
         /// <exception cref="ApiException"></exception>
         Task<PagedResponse<Character>> GetAsync(CharactersQuery charactersQuery, CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Retrieve character achievements.
-        /// </summary>
-        /// <param name="name">The name of the character whose achievements are to be retrieved.</param>
-        /// <param name="characterAchievementsQuery">The query <see cref="CharacterAchievementsQuery"/> to filter achievements.</param>
-        /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
-        /// <returns>A task representing the asynchronous operation.
-        /// The task result contains a tuple with a <see cref="PagedResponse{Achievement}"/> of achievements and an optional <see cref="GetCharacterAchievementsError"/>.</returns>
-        /// <exception cref="ApiException"></exception>
-        Task<(PagedResponse<Achievement> result, GetCharacterAchievementsError? error)> GetAchievementAsync(string name, CharacterAchievementsQuery characterAchievementsQuery, CancellationToken cancellationToken = default);
     }
 }

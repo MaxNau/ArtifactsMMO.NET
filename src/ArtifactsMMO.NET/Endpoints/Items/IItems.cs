@@ -19,9 +19,9 @@ namespace ArtifactsMMO.NET.Endpoints.Items
         /// <param name="code">The unique code of the item to retrieve.</param>
         /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
         /// <returns>A task representing the asynchronous operation.
-        /// The task result contains a tuple with the <see cref="ItemDetail"/> retrieved and an optional <see cref="GetItemError"/>.</returns>
+        /// The task result contains a tuple with the <see cref="Item"/> retrieved and an optional <see cref="GetItemError"/>.</returns>
         /// <exception cref="ApiException"></exception>
-        Task<(ItemDetail result, GetItemError? error)> GetAsync(string code, CancellationToken cancellationToken = default);
+        Task<(Item result, GetItemError? error)> GetAsync(string code, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Fetch items details.

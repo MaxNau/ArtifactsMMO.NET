@@ -20,7 +20,7 @@ namespace ArtifactsMMO.NET.Validators
             {
                 if (unequipItemReguest.Quantity.HasValue && !ItemQuantityValidator.IsValid(unequipItemReguest.Quantity.Value))
                 {
-                    new DisallowedItemQuantity();
+                    throw new DisallowedItemQuantity();
                 }
             }
         }

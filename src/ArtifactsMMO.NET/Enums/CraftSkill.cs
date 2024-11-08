@@ -33,6 +33,11 @@
         /// <summary>
         /// Skill for mining resources.
         /// </summary>
-        Mining
+        Mining,
+
+        /// <summary>
+        /// Skill for alchemy
+        /// </summary>
+        Alchemy,
     }
 }

@@ -88,16 +88,22 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
             return await PostAsync<BankGoldTransaction, WithdrawBankGoldError>($"my/{name}/action/bank/withdraw/gold", withdrawBankGoldRequest, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<(GrandExchangeTransactionData result, GrandExchangeBuyItemError? error)> GrandExchangeBuyItemAsync(string name, GrandExchangetemRequest grandExchangeBuyItemRequest, CancellationToken cancellationToken = default)
+        public async Task<(GrandExchangeTransactionData result, GrandExchangeBuyItemError? error)> GrandExchangeBuyItemAsync(string name, GrandExchangeBuyItemRequest grandExchangeBuyItemRequest, CancellationToken cancellationToken = default)
         {
             _nameValidator.Validate(name);
-            return await PostAsync<GrandExchangeTransactionData, GrandExchangeBuyItemError>($"my/{name}/action/ge/buy", grandExchangeBuyItemRequest, cancellationToken).ConfigureAwait(false);
+            return await PostAsync<GrandExchangeTransactionData, GrandExchangeBuyItemError>($"my/{name}/action/grandexchange/buy", grandExchangeBuyItemRequest, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<(GrandExchangeTransactionData result, GrandExchangeSellItemError? error)> GrandExchangeSellItemAsync(string name, GrandExchangetemRequest grandExchangeSellItemRequest, CancellationToken cancellationToken = default)
+        public async Task<(GrandExchangeOrderTransaction result, GrandExchangeCreateSellOrderError? error)> GrandExchangeCreateSellOrderAsync(string name, GrandExchangeCreateSellOrderRequest grandExchangeCreateSellOrderRequest, CancellationToken cancellationToken = default)
         {
             _nameValidator.Validate(name);
-            return await PostAsync<GrandExchangeTransactionData, GrandExchangeSellItemError>($"my/{name}/action/ge/sell", grandExchangeSellItemRequest, cancellationToken).ConfigureAwait(false);
+            return await PostAsync<GrandExchangeOrderTransaction, GrandExchangeCreateSellOrderError>($"my/{name}/action/grandexchange/sell", grandExchangeCreateSellOrderRequest, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<(GrandExchangeTransactionData result, GrandExchangeCancelSellOrderError? error)> GrandExchangeCancelSellOrderAsync(string name, GrandExchangeCancelSellOrderRequest grandExchangeCancelSellOrderRequest, CancellationToken cancellationToken = default)
+        {
+            _nameValidator.Validate(name);
+            return await PostAsync<GrandExchangeTransactionData, GrandExchangeCancelSellOrderError>($"my/{name}/action/grandexchange/cancel", grandExchangeCancelSellOrderRequest, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<(BankExtensionTransaction result, BuyBankExpansionError? error)> BuyBankExpansionAsync(string name, CancellationToken cancellationToken = default)
@@ -140,6 +146,18 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
         {
             _nameValidator.Validate(name);
             return await PostAsync<DeleteItem, DeleteItemError>($"my/{name}/action/delete", deleteItemRequest, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<(UseItem result, UseItemError? error)> UseItemAsync(string name, UseItemRequest useItemRequest, CancellationToken cancellationToken = default)
+        {
+            _nameValidator.Validate(name);
+            return await PostAsync<UseItem, UseItemError>($"my/{name}/action/use", useItemRequest, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<(CharacterRestData result, RestError? error)> RestAsync(string name, CancellationToken cancellationToken = default)
+        {
+            _nameValidator.Validate(name);
+            return await PostAsync<CharacterRestData, RestError>($"my/{name}/action/rest", null, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<(PagedResponse<Log> result, GetAllCharactersLogsError? error)> GetAllCharactersLogsAsync(AllCharactersLogsQuery allCharactersLogsQuery, CancellationToken cancellationToken = default)

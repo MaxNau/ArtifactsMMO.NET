@@ -4,21 +4,21 @@ using ArtifactsMMO.NET.Validators.Static;
 
 namespace ArtifactsMMO.NET.Validators
 {
-    internal class GrandExchangetemRequestValidator : IValidator<GrandExchangetemRequest>
+    internal class GrandExchangeCreateSellOrderRequestValidator : IValidator<GrandExchangeCreateSellOrderRequest>
     {
-        public void Validate(GrandExchangetemRequest grandExchangetemRequest)
+        public void Validate(GrandExchangeCreateSellOrderRequest request)
         {
-            if (!AlphaNumericUnderscoreHyphenValidator.IsValid(grandExchangetemRequest.Code))
+            if (!AlphaNumericUnderscoreHyphenValidator.IsValid(request.Code))
             {
                 throw new ItemCodeHasDisallowedCharacters();
             }
 
-            if (!QuantityValidator.IsValid(grandExchangetemRequest.Quantity))
+            if (!QuantityValidator.IsValid(request.Quantity))
             {
                 throw new DisallowedGrandExchangeQuantity();
             }
 
-            if (!QuantityValidator.IsValid(grandExchangetemRequest.Price))
+            if (request.Price < 1 || request.Price > 1000000000)
             {
                 throw new DisallowedPrice();
             }

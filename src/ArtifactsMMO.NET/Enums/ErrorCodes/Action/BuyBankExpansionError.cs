@@ -11,9 +11,9 @@
         ActionInProgress = 486,
 
         /// <summary>
-        /// Insufficient golds on your character.
+        /// Insufficient gold on your character.
         /// </summary>
-        InsufficientGoldsOnCharacter = 492,
+        InsufficientGoldOnCharacter = 492,
 
         /// <summary>
         /// Character not found.

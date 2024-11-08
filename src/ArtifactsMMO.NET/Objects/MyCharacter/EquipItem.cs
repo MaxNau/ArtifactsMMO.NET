@@ -1,4 +1,5 @@
-﻿using ArtifactsMMO.NET.Objects.Characters;
+﻿using ArtifactsMMO.NET.Enums;
+using ArtifactsMMO.NET.Objects.Characters;
 using ArtifactsMMO.NET.Objects.Items;
 using System.Text.Json.Serialization;
 
@@ -15,7 +16,7 @@ namespace ArtifactsMMO.NET.Objects.MyCharacter
         internal EquipItem() { }
 
         [JsonConstructor]
-        internal EquipItem(Cooldown cooldown, string slot, Item item, Character character)
+        internal EquipItem(ItemSlot slot, Item item, Cooldown cooldown, Character character)
             : base(cooldown, character)
         {
             Slot = slot;
@@ -25,7 +26,7 @@ namespace ArtifactsMMO.NET.Objects.MyCharacter
         /// <summary>
         /// Item slot.
         /// </summary>
-        public string Slot { get; }
+        public ItemSlot Slot { get; }
 
         /// <summary>
         /// Item details.

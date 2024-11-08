@@ -136,7 +136,7 @@ namespace ArtifactsMMO.NET.Objects.Leaderboard
         public int CookingTotalXp { get; }
 
         /// <summary>
-        /// The numbers of golds on this character.
+        /// The numbers of gold on this character.
         /// </summary>
         public int Gold { get; }
     }

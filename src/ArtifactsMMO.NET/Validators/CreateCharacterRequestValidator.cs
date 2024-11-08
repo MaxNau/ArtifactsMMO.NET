@@ -9,14 +9,14 @@ namespace ArtifactsMMO.NET.Validators
     {
         public void Validate(CreateCharacterRequest createCharacterRequest)
         {
-            if (createCharacterRequest.Name.Length < 3 || createCharacterRequest.Name.Length > 12)
-            {
-                throw new ArgumentException("Character name must be between 3 and 12 characters long.");
-            }
-
             if (!AlphaNumericUnderscoreHyphenValidator.IsValid(createCharacterRequest.Name))
             {
                 throw new CharacterNameHasDisallowedCharacters();
+            }
+
+            if (createCharacterRequest.Name.Length < 3 || createCharacterRequest.Name.Length > 12)
+            {
+                throw new ArgumentException("Character name must be between 3 and 12 characters long.");
             }
         }
     }

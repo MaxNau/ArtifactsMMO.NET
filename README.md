@@ -1,7 +1,7 @@
 # ArtifactsMMO.NET
 .NET client for the Artifacts MMO - https://artifactsmmo.com/
 
-**Version:** 2.4
+**Version:** 3.0
 
 Artifacts is an API-based MMO game where you can manage up to 5 characters to explore, fight, gather resources, craft items, and much more.
 

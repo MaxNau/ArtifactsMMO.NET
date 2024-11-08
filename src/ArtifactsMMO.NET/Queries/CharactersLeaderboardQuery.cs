@@ -6,32 +6,32 @@ using System.Text.Json;
 namespace ArtifactsMMO.NET.Queries
 {
     /// <summary>
-    /// Represents a query for retrieving leaderboard data, including pagination and sorting options.
+    /// Represents a query for retrieving characters leaderboard data, including pagination and sorting options.
     /// </summary>
     /// <remarks>
     /// This class inherits from <see cref="PaginationQuery"/> and implements <see cref="IQueryString"/> 
     /// to facilitate the construction of query strings for API requests.
     /// </remarks>
-    public class LeaderboardQuery : PaginationQuery, IQueryString
+    public class CharactersLeaderboardQuery : PaginationQuery, IQueryString
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LeaderboardQuery"/> class 
+        /// Initializes a new instance of the <see cref="CharactersLeaderboardQuery"/> class 
         /// with no parameters.
         /// </summary>
-        public LeaderboardQuery() : base(null, null)
+        public CharactersLeaderboardQuery() : base(null, null)
         {
             HasParameters = false;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LeaderboardQuery"/> class 
+        /// Initializes a new instance of the <see cref="CharactersLeaderboardQuery"/> class 
         /// with specified sorting, page, and size parameters.
         /// </summary>
         /// <param name="sort">The <see cref="LeaderboardSort"/> criteria to sort the leaderboard. Default sort by combat total XP.</param>
         /// <param name="page">The page number for pagination.</param>
         /// <param name="size">The number of items per page for pagination.</param>
         /// <exception cref="InvalidQueryParameter"></exception>
-        public LeaderboardQuery(LeaderboardSort? sort = null, int? page = null, int? size = null)
+        public CharactersLeaderboardQuery(LeaderboardSort? sort = null, int? page = null, int? size = null)
             : base(page, size)
         {
             Sort = sort;

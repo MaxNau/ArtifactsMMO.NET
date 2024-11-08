@@ -12,15 +12,15 @@ namespace ArtifactsMMO.NET.Objects.MyCharacter.GrandExchange
 
         [JsonConstructor]
         internal GrandExchangeTransactionData(Cooldown cooldown, Character character,
-            GrandExchangeTransaction transaction)
+            GrandExchangeTransaction order)
             : base(cooldown, character)
         {
-            Transaction = transaction;
+            Order = order;
         }
 
         /// <summary>
         /// Grand Exchange transaction
         /// </summary>
-        public GrandExchangeTransaction Transaction { get; }
+        public GrandExchangeTransaction Order { get; }
     }
 }

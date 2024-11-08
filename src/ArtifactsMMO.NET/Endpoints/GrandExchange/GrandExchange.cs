@@ -10,20 +10,25 @@ namespace ArtifactsMMO.NET.Endpoints.GrandExchange
 {
     internal class GrandExchange : ArtifactsMMOEndpoint, IGrandExchange
     {
-        private readonly string _resource = "ge";
         public GrandExchange(HttpClient httpClient, string apiKey) : base(httpClient, apiKey)
         {
         }
 
-        public async Task<(GrandExchangeItem result, GetGeItemError? error)> GetAsync(string code, CancellationToken cancellationToken = default)
-        {
-            return await GetAsync<GrandExchangeItem, GetGeItemError>($"{_resource}/{code}", cancellationToken).ConfigureAwait(false);
-        }
-
-        public async Task<PagedResponse<GrandExchangeItem>> GetAsync(GrandExchangeQuery grandExchangeQuery,
+        public async Task<PagedResponse<GrandExchangeOrderHistory>> GetSellHistoryAsync(string itemCode, GrandExchangeSellHistoryQuery grandExchangeSellHistoryQuery,
             CancellationToken cancellationToken = default)
         {
-            return await GetAsync<GrandExchangeItem>(_resource, grandExchangeQuery, cancellationToken).ConfigureAwait(false);
+            return await GetAsync<GrandExchangeOrderHistory>($"grandexchange/history/{itemCode}", grandExchangeSellHistoryQuery, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<PagedResponse<GrandExchangeOrder>> GetSellOrdersAsync(GrandExchangeSellOrdersQuery grandExchangeSellOrdersQuery,
+            CancellationToken cancellationToken = default)
+        {
+            return await GetAsync<GrandExchangeOrder>("grandexchange/orders", grandExchangeSellOrdersQuery, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<(GrandExchangeOrder result, GetGrandExchangeSellOrderError? error)> GetOrderAsync(string id, CancellationToken cancellationToken)
+        {
+            return await GetAsync<GrandExchangeOrder, GetGrandExchangeSellOrderError>($"grandexchange/orders/{id}", cancellationToken).ConfigureAwait(false);
         }
     }
 }

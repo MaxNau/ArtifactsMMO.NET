@@ -7,9 +7,9 @@
     <Authors>Maksym Naumov</Authors>
     <Description>Artifacts MMO client</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <VersionPrefix>2.4.1</VersionPrefix>
-    <FileVersion>2.4.1</FileVersion>
-    <AssemblyVersion>2.4.1</AssemblyVersion>
+    <VersionPrefix>3.0.0</VersionPrefix>
+    <FileVersion>3.0.0</FileVersion>
+    <AssemblyVersion>3.0.0</AssemblyVersion>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/MaxNau/ArtifactsMMO.NET</PackageProjectUrl>
@@ -32,4 +32,8 @@
     <PackageReference Include="System.Text.Json" Version="8.0.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="ArtifactsMMO.NET.Tests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+  </ItemGroup>
 </Project>

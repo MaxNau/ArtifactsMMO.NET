@@ -12,14 +12,20 @@ namespace ArtifactsMMO.NET.Objects.Tasks
         internal TaskRewards() { }
 
         [JsonConstructor]
-        internal TaskRewards(IReadOnlyCollection<SimpleItem> items)
+        internal TaskRewards(IReadOnlyCollection<SimpleItem> items, int gold)
         {
             Items = items;
+            Gold = gold;
         }
 
         /// <summary>
-        /// Rewards
+        /// Items rewards.
         /// </summary>
         public IReadOnlyCollection<SimpleItem> Items { get; }
+
+        /// <summary>
+        /// Gold rewards.
+        /// </summary>
+        public int Gold { get; }
     }
 }
