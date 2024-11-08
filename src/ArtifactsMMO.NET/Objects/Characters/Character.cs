@@ -18,17 +18,19 @@ namespace ArtifactsMMO.NET.Objects.Characters
             int woodcuttingXp, int woodcuttingMaxXp, int fishingLevel, int fishingXp, int fishingMaxXp,
             int weaponcraftingLevel, int weaponcraftingXp, int weaponcraftingMaxXp, int gearcraftingLevel,
             int gearcraftingXp, int gearcraftingMaxXp, int jewelrycraftingLevel, int jewelrycraftingXp,
-            int jewelrycraftingMaxXp, int cookingLevel, int cookingXp, int cookingMaxXp, int hp, int haste,
+            int jewelrycraftingMaxXp, int cookingLevel, int cookingXp, int cookingMaxXp, int alchemyLevel,
+            int alchemyXp, int alchemyMaxXp, int hp, int haste, string account,
             int criticalStrike, int stamina, int attackFire, int attackEarth, int attackWater, int attackAir,
             int dmgFire, int dmgEarth, int dmgWater, int dmgAir, int resFire, int resEarth, int resWater,
             int resAir, int x, int y, int cooldown, DateTimeOffset? cooldownExpiration, string weaponSlot,
             string shieldSlot, string helmetSlot, string bodyArmorSlot, string legArmorSlot, string bootsSlot,
             string ring1Slot, string ring2Slot, string amuletSlot, string artifact1Slot, string artifact2Slot,
-            string artifact3Slot, string consumable1Slot, int consumable1SlotQuantity, string consumable2Slot,
-            int consumable2SlotQuantity, string task, string taskType, int taskProgress, int taskTotal,
-            int inventoryMaxItems, IReadOnlyCollection<InventorySlot> inventory)
+            string artifact3Slot, string utility1Slot, int utility1SlotQuantity, string utility2Slot,
+            int utility2SlotQuantity, string task, string taskType, int taskProgress, int taskTotal,
+            int inventoryMaxItems, int maxHp, IReadOnlyCollection<InventorySlot> inventory)
         {
             Name = name;
+            Account = account;
             Skin = skin;
             Level = level;
             Xp = xp;
@@ -57,6 +59,9 @@ namespace ArtifactsMMO.NET.Objects.Characters
             CookingLevel = cookingLevel;
             CookingXp = cookingXp;
             CookingMaxXp = cookingMaxXp;
+            AlchemyLevel = alchemyLevel;
+            AlchemyXp = alchemyXp;
+            AlchemyMaxXp = alchemyMaxXp;
             Hp = hp;
             Haste = haste;
             CriticalStrike = criticalStrike;
@@ -89,15 +94,16 @@ namespace ArtifactsMMO.NET.Objects.Characters
             Artifact1Slot = artifact1Slot;
             Artifact2Slot = artifact2Slot;
             Artifact3Slot = artifact3Slot;
-            Consumable1Slot = consumable1Slot;
-            Consumable1SlotQuantity = consumable1SlotQuantity;
-            Consumable2Slot = consumable2Slot;
-            Consumable2SlotQuantity = consumable2SlotQuantity;
+            Utility1Slot = utility1Slot;
+            Utility1SlotQuantity = utility1SlotQuantity;
+            Utility2Slot = utility2Slot;
+            Utility2SlotQuantity = utility2SlotQuantity;
             Task = task;
             TaskType = taskType;
             TaskProgress = taskProgress;
             TaskTotal = taskTotal;
             InventoryMaxItems = inventoryMaxItems;
+            MaxHp = maxHp;
             Inventory = inventory;
         }
 
@@ -105,6 +111,11 @@ namespace ArtifactsMMO.NET.Objects.Characters
         /// Name of the character.
         /// </summary>
         public string Name { get; }
+
+        /// <summary>
+        /// Account name.
+        /// </summary>
+        public string Account { get; }
 
         /// <summary>
         /// Character skin code.
@@ -132,7 +143,7 @@ namespace ArtifactsMMO.NET.Objects.Characters
         public int AchievementsPoints { get; }
 
         /// <summary>
-        /// The numbers of golds on this character.
+        /// The numbers of gold on this character.
         /// </summary>
         public int Gold { get; }
 
@@ -245,6 +256,21 @@ namespace ArtifactsMMO.NET.Objects.Characters
         /// Cooking XP required to level up the skill.
         /// </summary>
         public int CookingMaxXp { get; }
+
+        /// <summary>
+        /// The current xp level of the Alchemy skill.
+        /// </summary>
+        public int AlchemyLevel { get; }
+
+        /// <summary>
+        /// Alchemy XP.
+        /// </summary>
+        public int AlchemyXp { get; }
+
+        /// <summary>
+        /// Alchemy XP required to level up the skill.
+        /// </summary>
+        public int AlchemyMaxXp { get; }
 
         /// <summary>
         /// Character HP.
@@ -409,24 +435,24 @@ namespace ArtifactsMMO.NET.Objects.Characters
         public string Artifact3Slot { get; }
 
         /// <summary>
-        /// Consumable 1 slot.
+        /// Utility first slot.
         /// </summary>
-        public string Consumable1Slot { get; }
+        public string Utility1Slot { get; }
 
         /// <summary>
-        /// Consumable 1 quantity.
+        /// Utility first slot quantity.
         /// </summary>
-        public int Consumable1SlotQuantity { get; }
+        public int Utility1SlotQuantity { get; }
 
         /// <summary>
-        /// Consumable 2 slot.
+        /// Utility second slot.
         /// </summary>
-        public string Consumable2Slot { get; }
+        public string Utility2Slot { get; }
 
         /// <summary>
-        /// Consumable 2 quantity.
+        /// Utility second slot quantity.
         /// </summary>
-        public int Consumable2SlotQuantity { get; }
+        public int Utility2SlotQuantity { get; }
 
         /// <summary>
         /// Task in progress.
@@ -452,6 +478,11 @@ namespace ArtifactsMMO.NET.Objects.Characters
         /// Inventory max items.
         /// </summary>
         public int InventoryMaxItems { get; }
+
+        /// <summary>
+        /// Character max HP.
+        /// </summary>
+        public int MaxHp { get; }
 
         /// <summary>
         /// List of inventory slots.

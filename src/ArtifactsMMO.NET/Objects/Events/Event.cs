@@ -1,6 +1,4 @@
-﻿using ArtifactsMMO.NET.Objects.Maps;
-using System;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.Objects.Events
 {
@@ -12,16 +10,21 @@ namespace ArtifactsMMO.NET.Objects.Events
         internal Event() { }
 
         [JsonConstructor]
-        internal Event(string name, Map map, string previousSkin, long duration, DateTimeOffset expiration,
-            DateTimeOffset createdAt)
+        internal Event(string code, string name, string skin, long duration, int rate,
+            EventConten conten)
         {
             Name = name;
-            Map = map;
-            PreviousSkin = previousSkin;
             Duration = duration;
-            Expiration = expiration;
-            CreatedAt = createdAt;
+            Code = code;
+            Skin = skin;
+            Rate = rate;
+            Content = conten;
         }
+
+        /// <summary>
+        /// Code of the event. This is the event's unique identifier (ID).
+        /// </summary>
+        public string Code { get; }
 
         /// <summary>
         /// Name of the event.
@@ -29,14 +32,9 @@ namespace ArtifactsMMO.NET.Objects.Events
         public string Name { get; }
 
         /// <summary>
-        /// Map of the event.
+        /// Map skin of the event.
         /// </summary>
-        public Map Map { get; }
-
-        /// <summary>
-        /// Previous map skin.
-        /// </summary>
-        public string PreviousSkin { get; }
+        public string Skin { get; }
 
         /// <summary>
         /// Duration in minutes.
@@ -44,13 +42,13 @@ namespace ArtifactsMMO.NET.Objects.Events
         public long Duration { get; }
 
         /// <summary>
-        /// Expiration datetime.
+        /// Rate spawn of the event. (1/rate every minute)
         /// </summary>
-        public DateTimeOffset Expiration { get; }
+        public int Rate { get; }
 
         /// <summary>
-        /// Start datetime.
+        /// Content of the event.
         /// </summary>
-        public DateTimeOffset CreatedAt { get; }
+        public EventConten Content { get; }
     }
 }

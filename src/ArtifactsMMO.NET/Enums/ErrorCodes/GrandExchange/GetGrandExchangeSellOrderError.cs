@@ -1,13 +1,13 @@
 ﻿namespace ArtifactsMMO.NET.Enums.ErrorCodes.GrandExchange
 {
     /// <summary>
-    /// Get Grand Exchange item error codes
+    /// Get Grand Exchange sell order error codes
     /// </summary>
-    public enum GetGeItemError
+    public enum GetGrandExchangeSellOrderError
     {
         /// <summary>
-        /// Item not found.
+        /// Order not found.
         /// </summary>
-        ItemNotFound = 404,
+        OrderNotFound = 404,
     }
 }

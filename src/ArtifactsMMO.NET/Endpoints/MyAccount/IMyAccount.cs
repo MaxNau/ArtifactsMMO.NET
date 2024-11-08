@@ -7,6 +7,7 @@ using System.Threading;
 using ArtifactsMMO.NET.Enums.ErrorCodes.MyAccount;
 using ArtifactsMMO.NET.Exceptions;
 using ArtifactsMMO.NET.Requests;
+using ArtifactsMMO.NET.Objects.GrandExchange;
 
 namespace ArtifactsMMO.NET.Endpoints.MyAccount
 {
@@ -33,12 +34,30 @@ namespace ArtifactsMMO.NET.Endpoints.MyAccount
         Task<PagedResponse<SimpleItem>> GetBankItemsAsync(BankItemsQuery bankItemsQuery, CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Fetch your sell orders details.
+        /// </summary>
+        /// <param name="grandExchangeSellOrdersQuery">The query <see cref="MyGrandExchangeSellOrdersQuery"/> specifying the criteria for fetching sell orders.</param>
+        /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
+        /// <returns>A task representing the asynchronous operation, containing a paged response of <see cref="GrandExchangeOrder"/> instances.</returns>
+        /// <exception cref="ApiException"></exception>
+        Task<PagedResponse<GrandExchangeOrder>> GetGrandExchangeSellOrdersAsync(MyGrandExchangeSellOrdersQuery grandExchangeSellOrdersQuery, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Fetch your sales history of the last 7 days.
+        /// </summary>
+        /// <param name="grandExchangeOrderHistoryQuery">The query <see cref="MyGrandExchangeOrderHistoryQuery"/> specifying the criteria for fetching sell orders history.</param>
+        /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
+        /// <returns>A task representing the asynchronous operation, containing a paged response of <see cref="GrandExchangeOrderHistory"/> instances.</returns>
+        /// <exception cref="ApiException"></exception>
+        Task<PagedResponse<GrandExchangeOrderHistory>> GetGrandExchangeSellHistoryAsync(MyGrandExchangeOrderHistoryQuery grandExchangeOrderHistoryQuery, CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Fetch account details.
         /// </summary>
         /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
-        /// <returns>A task representing the asynchronous operation, containing the <see cref="AccountDetails"/>.</returns>
+        /// <returns>A task representing the asynchronous operation, containing the <see cref="MyAccountDetails"/>.</returns>
         /// <exception cref="ApiException"></exception>
-        Task<AccountDetails> GetAccountDetailsAsync(CancellationToken cancellationToken = default);
+        Task<MyAccountDetails> GetAccountDetailsAsync(CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Change your account password. Changing the password reset the account token.

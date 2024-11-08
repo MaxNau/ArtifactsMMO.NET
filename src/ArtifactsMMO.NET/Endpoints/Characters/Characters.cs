@@ -1,6 +1,5 @@
 ﻿using ArtifactsMMO.NET.Enums.ErrorCodes.Character;
 using ArtifactsMMO.NET.Objects;
-using ArtifactsMMO.NET.Objects.Achievements;
 using ArtifactsMMO.NET.Objects.Characters;
 using ArtifactsMMO.NET.Queries;
 using ArtifactsMMO.NET.Requests;
@@ -48,11 +47,6 @@ namespace ArtifactsMMO.NET.Endpoints.Characters
         public async Task<PagedResponse<Character>> GetAsync(CharactersQuery charactersQuery, CancellationToken cancellationToken = default)
         {
             return await GetAsync<Character>("characters", charactersQuery, cancellationToken).ConfigureAwait(false);
-        }
-
-        public async Task<(PagedResponse<Achievement> result, GetCharacterAchievementsError? error)> GetAchievementAsync(string name, CharacterAchievementsQuery characterAchievementsQuery, CancellationToken cancellationToken = default)
-        {
-            return await GetAsync<Achievement, GetCharacterAchievementsError>($"characters/{name}/achievements", characterAchievementsQuery, cancellationToken).ConfigureAwait(false);
         }
     }
 }

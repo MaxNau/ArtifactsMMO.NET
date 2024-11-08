@@ -1,5 +1,6 @@
 ﻿using ArtifactsMMO.NET.Enums.ErrorCodes.MyAccount;
 using ArtifactsMMO.NET.Objects;
+using ArtifactsMMO.NET.Objects.GrandExchange;
 using ArtifactsMMO.NET.Objects.Items;
 using ArtifactsMMO.NET.Objects.MyAccount;
 using ArtifactsMMO.NET.Queries;
@@ -27,9 +28,19 @@ namespace ArtifactsMMO.NET.Endpoints.MyAccount
             return await GetAsync<SimpleItem>("my/bank/items", bankItemsQuery, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<AccountDetails> GetAccountDetailsAsync(CancellationToken cancellationToken = default)
+        public async Task<MyAccountDetails> GetAccountDetailsAsync(CancellationToken cancellationToken = default)
         {
-            return await GetAsync<AccountDetails>("my/details", cancellationToken).ConfigureAwait(false);
+            return await GetAsync<MyAccountDetails>("my/details", cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<PagedResponse<GrandExchangeOrder>> GetGrandExchangeSellOrdersAsync(MyGrandExchangeSellOrdersQuery grandExchangeSellOrdersQuery, CancellationToken cancellationToken = default)
+        {
+            return await GetAsync<GrandExchangeOrder>("my/grandexchange/orders", grandExchangeSellOrdersQuery, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<PagedResponse<GrandExchangeOrderHistory>> GetGrandExchangeSellHistoryAsync(MyGrandExchangeOrderHistoryQuery grandExchangeOrderHistoryQuery, CancellationToken cancellationToken = default)
+        {
+            return await GetAsync<GrandExchangeOrderHistory>("my/grandexchange/history", grandExchangeOrderHistoryQuery, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<ChangePasswordError?> ChangePasswordAsync(ChangePasswordRequest changePasswordRequest, CancellationToken cancellationToken = default)

@@ -10,13 +10,19 @@ namespace ArtifactsMMO.NET.Objects.MyCharacter.GrandExchange
         internal GrandExchangeTransaction() { }
 
         [JsonConstructor]
-        internal GrandExchangeTransaction(string code, int quantity, int price, int totalPrice)
+        internal GrandExchangeTransaction(string id, string code, int quantity, int price, int totalPrice)
         {
+            Id = id;
             Code = code;
             Quantity = quantity;
             Price = price;
             TotalPrice = totalPrice;
         }
+
+        /// <summary>
+        /// Order id.
+        /// </summary>
+        public string Id { get; }
 
         /// <summary>
         /// Item code.

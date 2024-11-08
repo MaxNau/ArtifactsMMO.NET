@@ -396,3 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/tests/ArtifactsMMO.NET.Integration.Tests/appsettings.local.json

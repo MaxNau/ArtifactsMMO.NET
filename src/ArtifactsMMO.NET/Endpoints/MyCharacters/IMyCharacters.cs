@@ -102,7 +102,7 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
         Task<(BankItemTransaction result, DepositBankError? error)> DepositBankAsync(string name, DepositBankRequest depositBankRequest, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Deposit golds in a bank on the character's map.
+        /// Deposit gold in a bank on the character's map.
         /// </summary>
         /// <param name="name">The name of the character making the deposit.</param>
         /// <param name="depositBankGoldRequest">The request <see cref="DepositBankGoldRequest"/> containing the amount of gold to be deposited.</param>
@@ -153,25 +153,37 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
         /// Buy an item at the Grand Exchange on the character's map.
         /// </summary>
         /// <param name="name">The name of the character making the purchase.</param>
-        /// <param name="grandExchangeBuyItemRequest">The request <see cref="GrandExchangetemRequest"/> containing details about the item to be bought.</param>
+        /// <param name="grandExchangeBuyItemRequest">The request <see cref="GrandExchangeBuyItemRequest"/> containing details about the item to be bought.</param>
         /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
         /// <returns>A task representing the asynchronous operation.
         /// The task result contains a tuple with the <see cref="GrandExchangeTransactionData"/>
         /// and an optional <see cref="GrandExchangeBuyItemError"/>.</returns>
         /// <exception cref="ApiException"></exception>
-        Task<(GrandExchangeTransactionData result, GrandExchangeBuyItemError? error)> GrandExchangeBuyItemAsync(string name, GrandExchangetemRequest grandExchangeBuyItemRequest, CancellationToken cancellationToken = default);
+        Task<(GrandExchangeTransactionData result, GrandExchangeBuyItemError? error)> GrandExchangeBuyItemAsync(string name, GrandExchangeBuyItemRequest grandExchangeBuyItemRequest, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Sell an item at the Grand Exchange on the character's map.
+        /// Create sell order at the Grand Exchange on the character's map.
         /// </summary>
         /// <param name="name">The name of the character making the sale.</param>
-        /// <param name="grandExchangeSellItemRequest">The request <see cref="GrandExchangetemRequest"/> containing details about the item to be sold.</param>
+        /// <param name="grandExchangeCreateSellOrderRequest">The request <see cref="GrandExchangeCreateSellOrderRequest"/> containing details about order to be created.</param>
+        /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
+        /// <returns>A task representing the asynchronous operation.
+        /// The task result contains a tuple with the <see cref="GrandExchangeOrderTransaction"/>
+        /// and an optional <see cref="GrandExchangeCreateSellOrderError"/>.</returns>
+        /// <exception cref="ApiException"></exception>
+        Task<(GrandExchangeOrderTransaction result, GrandExchangeCreateSellOrderError? error)> GrandExchangeCreateSellOrderAsync(string name, GrandExchangeCreateSellOrderRequest grandExchangeCreateSellOrderRequest, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Cancel sell order at the Grand Exchange on the character's map.
+        /// </summary>
+        /// <param name="name">The name of the character making the sale.</param>
+        /// <param name="grandExchangeCancelSellOrderRequest">The request <see cref="GrandExchangeCancelSellOrderRequest"/> containing details about order to be canceled.</param>
         /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
         /// <returns>A task representing the asynchronous operation.
         /// The task result contains a tuple with the <see cref="GrandExchangeTransactionData"/>
-        /// and an optional <see cref="GrandExchangeSellItemError"/>.</returns>
+        /// and an optional <see cref="GrandExchangeCancelSellOrderError"/>.</returns>
         /// <exception cref="ApiException"></exception>
-        Task<(GrandExchangeTransactionData result, GrandExchangeSellItemError? error)> GrandExchangeSellItemAsync(string name, GrandExchangetemRequest grandExchangeSellItemRequest, CancellationToken cancellationToken = default);
+        Task<(GrandExchangeTransactionData result, GrandExchangeCancelSellOrderError? error)> GrandExchangeCancelSellOrderAsync(string name, GrandExchangeCancelSellOrderRequest grandExchangeCancelSellOrderRequest, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Buy a 20 slots bank expansion.
@@ -240,6 +252,29 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
         /// <exception cref="ApiException"></exception>
         Task<(TaskCancelled result, TaskCancelledError? error)> TaskCancelAsync(string name, CancellationToken cancellationToken = default);
 
+        /// <summary>
+        /// Use an item as a consumable.
+        /// </summary>
+        /// <param name="name">The name of the character using the item.</param>
+        /// <param name="useItemRequest">The request <see cref="UseItemRequest"/> containing details about item to be used.</param>
+        /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
+        /// <returns>A task representing the asynchronous operation.
+        /// The task result contains a tuple with the <see cref="TaskCancelled"/>
+        /// and an optional <see cref="UseItemError"/>.</returns>
+        /// <exception cref="ApiException"></exception>
+        Task<(UseItem result, UseItemError? error)> UseItemAsync(string name, UseItemRequest useItemRequest, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Recovers hit points by resting. (1 second per 5 HP, minimum 3 seconds)
+        /// </summary>
+        /// <param name="name">The name of the character.</param>
+        /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
+        /// <returns>A task representing the asynchronous operation.
+        /// The task result contains a tuple with the <see cref="TaskCancelled"/>
+        /// and an optional <see cref="UseItemError"/>.</returns>
+        /// <exception cref="ApiException"></exception>
+        Task<(CharacterRestData result, RestError? error)> RestAsync(string name, CancellationToken cancellationToken = default);
+        
         /// <summary>
         /// Delete an item from your character's inventory.
         /// </summary>

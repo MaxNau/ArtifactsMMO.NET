@@ -9,16 +9,20 @@ namespace ArtifactsMMO.NET.Endpoints.Events
 {
     internal class Events : ArtifactsMMOEndpoint, IEvents
     {
-        private readonly string _resource = "events";
-
         public Events(HttpClient httpClient, string apiKey) : base(httpClient, apiKey)
         {
         }
-
-        public async Task<PagedResponse<Event>> GetAsync(EventsQuery eventsQuery,
+        public async Task<PagedResponse<Event>> GetAllAsync(EventsQuery eventsQuery,
             CancellationToken cancellationToken = default)
         {
-            return await GetAsync<Event>(_resource, eventsQuery, cancellationToken).ConfigureAwait(false);
+            return await GetAsync<Event>("events", eventsQuery, cancellationToken).ConfigureAwait(false);
+        }
+
+
+        public async Task<PagedResponse<ActiveEvent>> GetActiveAsync(EventsQuery eventsQuery,
+            CancellationToken cancellationToken = default)
+        {
+            return await GetAsync<ActiveEvent>("events/active", eventsQuery, cancellationToken).ConfigureAwait(false);
         }
     }
 }

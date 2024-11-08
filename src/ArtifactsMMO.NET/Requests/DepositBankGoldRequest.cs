@@ -4,7 +4,7 @@ using ArtifactsMMO.NET.Validators;
 namespace ArtifactsMMO.NET.Requests
 {
     /// <summary>
-    /// Request to deposit golds in a bank
+    /// Request to deposit gold in a bank
     /// </summary>
     public class DepositBankGoldRequest : IRequest
     {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ArtifactsMMO.NET.Enums;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.Objects.MyAccount
@@ -6,23 +7,23 @@ namespace ArtifactsMMO.NET.Objects.MyAccount
     /// <summary>
     /// Represents the details of a user account.
     /// </summary>
-    public class AccountDetails
+    public class MyAccountDetails
     {
-        internal AccountDetails() { }
+        internal MyAccountDetails() { }
 
         [JsonConstructor]
-        internal AccountDetails(string username, string email, bool subscribed, int? subscribedUntil,
-            bool founder, List<string> badges, int? gems, bool banned, string banReason)
+        internal MyAccountDetails(string username, string email, bool subscribed, List<string> badges,
+            int gems, bool banned, string banReason,int achievementsPoints, MemberStatus status)
         {
             Username = username;
             Email = email;
             Subscribed = subscribed;
-            SubscribedUntil = subscribedUntil;
-            Founder = founder;
             Badges = badges;
             Gems = gems;
             Banned = banned;
             BanReason = banReason;
+            AchievementsPoints = achievementsPoints;
+            Status = status;
         }
 
         /// <summary>
@@ -41,14 +42,14 @@ namespace ArtifactsMMO.NET.Objects.MyAccount
         public bool Subscribed { get; }
 
         /// <summary>
-        /// Season number until which the account is subscribed.
+        /// Achievement points.
         /// </summary>
-        public int? SubscribedUntil { get; }
+        public int AchievementsPoints { get; }
 
         /// <summary>
-        /// Value indicating whether the account is a founder account.
+        /// Member status.
         /// </summary>
-        public bool Founder { get; }
+        public MemberStatus Status { get; }
 
         /// <summary>
         /// List of badges earned by the account.
@@ -58,7 +59,7 @@ namespace ArtifactsMMO.NET.Objects.MyAccount
         /// <summary>
         /// Number of gems the account currently holds.
         /// </summary>
-        public int? Gems { get; }
+        public int Gems { get; }
 
         /// <summary>
         /// Value indicating whether the account is banned.

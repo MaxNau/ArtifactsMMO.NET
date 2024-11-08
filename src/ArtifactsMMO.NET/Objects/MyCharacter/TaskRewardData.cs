@@ -12,15 +12,15 @@ namespace ArtifactsMMO.NET.Objects.MyCharacter
         internal TaskRewardData() { }
 
         [JsonConstructor]
-        internal TaskRewardData(SimpleTaskReward reward, Cooldown cooldown, Character character)
+        internal TaskRewardData(TaskRewards rewards, Cooldown cooldown, Character character)
             : base(cooldown, character)
         {
-            Reward = reward;
+            Rewards = rewards;
         }
 
         /// <summary>
-        /// Brief task reward details
+        /// Reward details.
         /// </summary>
-        public SimpleTaskReward Reward { get; }
+        public TaskRewards Rewards { get; }
     }
 }

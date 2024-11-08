@@ -12,7 +12,7 @@ namespace ArtifactsMMO.NET.Objects.Achievements
 
         [JsonConstructor]
         internal Achievement(string name, string code, string description, int points, AchievementType type,
-            string target, int total)
+            string target, int total, AchievementRewards rewards)
         {
             Name = name;
             Code = code;
@@ -21,6 +21,7 @@ namespace ArtifactsMMO.NET.Objects.Achievements
             Type = type;
             Target = target;
             Total = total;
+            Rewards = rewards;
         }
 
         /// <summary>
@@ -60,5 +61,10 @@ namespace ArtifactsMMO.NET.Objects.Achievements
         /// Total to do.
         /// </summary>
         public int Total { get; }
+
+        /// <summary>
+        /// Rewards.
+        /// </summary>
+        public AchievementRewards Rewards { get; }
     }
 }
