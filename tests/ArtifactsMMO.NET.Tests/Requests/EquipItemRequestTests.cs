@@ -34,7 +34,7 @@ namespace ArtifactsMMO.NET.Tests.Requests
         public void Constructor_DisallowedConsumablesQuantity_ThrowsDisallowedConsumablesQuantity()
         {
             var validCode = "validItemCode";
-            var slot = ItemSlot.Consumable1;
+            var slot = ItemSlot.Utility1;
             int? quantity = 200;
 
             Assert.Throws<DisallowedConsumablesQuantity>(() => new EquipItemRequest(validCode, slot, quantity));
@@ -54,7 +54,7 @@ namespace ArtifactsMMO.NET.Tests.Requests
         public void Constructor_ValidConsumableParameters_CreatesInstance()
         {
             var validCode = "validConsumableCode";
-            var slot = ItemSlot.Consumable1;
+            var slot = ItemSlot.Utility1;
             int? quantity = 10;
 
             var request = new EquipItemRequest(validCode, slot, quantity);
