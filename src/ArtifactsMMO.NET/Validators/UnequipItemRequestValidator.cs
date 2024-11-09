@@ -9,7 +9,7 @@ namespace ArtifactsMMO.NET.Validators
     {
         public void Validate(UnequipItemReguest unequipItemReguest)
         {
-            if (unequipItemReguest.Slot == ItemSlot.Consumable1 || unequipItemReguest.Slot == ItemSlot.Consumable2)
+            if (unequipItemReguest.Slot == ItemSlot.Utility1 || unequipItemReguest.Slot == ItemSlot.Utility2)
             {
                 if (unequipItemReguest.Quantity.HasValue && !ConsumablesQuantityValidator.IsValid(unequipItemReguest.Quantity.Value))
                 {

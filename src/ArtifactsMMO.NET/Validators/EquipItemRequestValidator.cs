@@ -14,7 +14,7 @@ namespace ArtifactsMMO.NET.Validators
                 throw new ItemCodeHasDisallowedCharacters();
             }
 
-            if (equipItemRequest.Slot == ItemSlot.Consumable1 || equipItemRequest.Slot == ItemSlot.Consumable2)
+            if (equipItemRequest.Slot == ItemSlot.Utility1 || equipItemRequest.Slot == ItemSlot.Utility2)
             {
                 if (equipItemRequest.Quantity.HasValue && !ConsumablesQuantityValidator.IsValid(equipItemRequest.Quantity.Value))
                 {
