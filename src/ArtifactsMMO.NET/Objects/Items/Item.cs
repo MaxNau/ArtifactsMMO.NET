@@ -1,4 +1,5 @@
-﻿using ArtifactsMMO.NET.Objects.Crafting;
+﻿using ArtifactsMMO.NET.Enums;
+using ArtifactsMMO.NET.Objects.Crafting;
 using ArtifactsMMO.NET.Objects.Effects;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
@@ -13,7 +14,7 @@ namespace ArtifactsMMO.NET.Objects.Items
         internal Item() { }
 
         [JsonConstructor]
-        internal Item(string name, string code, int level, string type, string subtype, string description,
+        internal Item(string name, string code, int level, ItemType type, string subtype, string description,
             IReadOnlyCollection<Effect> effects, Craft craft)
         {
             Name = name;
@@ -44,7 +45,7 @@ namespace ArtifactsMMO.NET.Objects.Items
         /// <summary>
         /// Item type.
         /// </summary>
-        public string Type { get; }
+        public ItemType Type { get; }
 
         /// <summary>
         /// Item subtype.

@@ -36,6 +36,11 @@
         SellGe,
 
         /// <summary>
+        /// Cooldown due to cancelling sell order on the Grand Exchange.
+        /// </summary>
+        CancelGe,
+
+        /// <summary>
         /// Cooldown due to deleting an item.
         /// </summary>
         DeleteItem,
@@ -43,12 +48,22 @@
         /// <summary>
         /// Cooldown due to depositing items in the bank.
         /// </summary>
-        DepositBank,
+        Deposit,
 
         /// <summary>
         /// Cooldown due to withdrawing items from the bank.
         /// </summary>
-        WithdrawBank,
+        Withdraw,
+
+        /// <summary>
+        /// Cooldown due to depositing gold in the bank.
+        /// </summary>
+        DepositGold,
+
+        /// <summary>
+        /// Cooldown due to withdrawing gold from the bank.
+        /// </summary>
+        WithdrawGold,
 
         /// <summary>
         /// Cooldown due to equipping an item.
@@ -68,6 +83,21 @@
         /// <summary>
         /// Cooldown due to recycling items.
         /// </summary>
-        Recycling
+        Recycling,
+
+        /// <summary>
+        /// Cooldown due to rest action
+        /// </summary>
+        Rest,
+
+        /// <summary>
+        /// Cooldown due to use item action
+        /// </summary>
+        Use,
+
+        /// <summary>
+        /// Cooldown due to buying bank expansion
+        /// </summary>
+        BuyBankExpansion
     }
 }
