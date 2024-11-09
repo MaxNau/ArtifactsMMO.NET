@@ -6,9 +6,9 @@
     public enum ItemType
     {
         /// <summary>
-        /// Consumable.
+        /// Utility.
         /// </summary>
-        Consumable,
+        Utility,
 
         /// <summary>
         /// Body armor.

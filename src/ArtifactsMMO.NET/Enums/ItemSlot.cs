@@ -66,13 +66,13 @@
         Artifact3,
 
         /// <summary>
-        /// First consumable slot
+        /// First utility slot
         /// </summary>
-        Consumable1,
+        Utility1,
 
         /// <summary>
-        /// Second consumable slot
+        /// Second utility slot
         /// </summary>
-        Consumable2
+        Utility2
     }
 }
