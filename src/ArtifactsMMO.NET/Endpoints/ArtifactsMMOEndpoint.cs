@@ -27,15 +27,7 @@ namespace ArtifactsMMO.NET.Endpoints
     {
         private readonly Uri _baseUri = new Uri("https://api.artifactsmmo.com/");
         private readonly ArtifactsMMOApiErrorFactory _errorFactory;
-        private readonly JsonSerializerOptions _jsonSerializerOptions = 
-            new JsonSerializerOptions {
-                PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-                Converters =
-                {
-                    new JsonStringEnumConverter(JsonNamingPolicy.SnakeCaseLower)
-                }
-            };
+        private readonly JsonSerializerOptions _jsonSerializerOptions;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ArtifactsMMOEndpoint"/> class.
@@ -43,6 +35,7 @@ namespace ArtifactsMMO.NET.Endpoints
         /// <param name="httpClient">The <see cref="HttpClient"/> used for making HTTP requests to the API.</param>
         private protected ArtifactsMMOEndpoint(HttpClient httpClient) : base(httpClient)
         {
+            _jsonSerializerOptions = new JsonSerializerOptionsFactory().Get(JsonSerializerOptionsMode.Default);
             _errorFactory = new ArtifactsMMOApiErrorFactory();
             SetBaseAddress();
             SetUserAgent();
@@ -64,6 +57,31 @@ namespace ArtifactsMMO.NET.Endpoints
                 throw new ArgumentNullException(nameof(apiKey));
             }
 
+            _jsonSerializerOptions = new JsonSerializerOptionsFactory().Get(JsonSerializerOptionsMode.Default);
+            _errorFactory = new ArtifactsMMOApiErrorFactory();
+            SetBaseAddress();
+            AddDefaultRequestHeader("Authorization", $"Bearer {apiKey}");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ArtifactsMMOEndpoint"/> class.
+        /// </summary>
+        /// <param name="httpClient">The <see cref="HttpClient"/> used for making HTTP requests to the API.</param>
+        /// <param name="apiKey">The API key for authenticating requests to the API.</param>
+        /// <param name="jsonSerializerOptionsFactory"></param>
+        /// <remarks>
+        /// Used for testing
+        /// </remarks>
+        internal ArtifactsMMOEndpoint(HttpClient httpClient, string apiKey,
+            IJsonSerializerOptionsFactory jsonSerializerOptionsFactory)
+            : base(httpClient, jsonSerializerOptionsFactory)
+        {
+            if (string.IsNullOrWhiteSpace(apiKey))
+            {
+                throw new ArgumentNullException(nameof(apiKey));
+            }
+            
+            _jsonSerializerOptions = new JsonSerializerOptionsFactory().Get(JsonSerializerOptionsMode.Test);
             _errorFactory = new ArtifactsMMOApiErrorFactory();
             SetBaseAddress();
             AddDefaultRequestHeader("Authorization", $"Bearer {apiKey}");

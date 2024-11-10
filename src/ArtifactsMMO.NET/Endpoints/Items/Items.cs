@@ -1,4 +1,5 @@
 ﻿using ArtifactsMMO.NET.Enums.ErrorCodes.Items;
+using ArtifactsMMO.NET.Internal;
 using ArtifactsMMO.NET.Objects;
 using ArtifactsMMO.NET.Objects.Items;
 using ArtifactsMMO.NET.Queries;
@@ -12,6 +13,12 @@ namespace ArtifactsMMO.NET.Endpoints.Items
     {
         private readonly string _resource = "items";
         public Items(HttpClient httpClient, string apiKey) : base(httpClient, apiKey)
+        {
+        }
+
+        internal Items(HttpClient httpClient, string apiKey,
+            IJsonSerializerOptionsFactory jsonSerializerOptionsFactory)
+            : base(httpClient, apiKey, jsonSerializerOptionsFactory)
         {
         }
 

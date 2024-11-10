@@ -1,4 +1,5 @@
 ﻿using ArtifactsMMO.NET.Enums.ErrorCodes.Achievments;
+using ArtifactsMMO.NET.Internal;
 using ArtifactsMMO.NET.Objects;
 using ArtifactsMMO.NET.Objects.Achievements;
 using ArtifactsMMO.NET.Queries;
@@ -12,6 +13,12 @@ namespace ArtifactsMMO.NET.Endpoints.Achievements
     {
         private readonly string _resource = "achievements";
         public Achievements(HttpClient httpClient, string apiKey) : base(httpClient, apiKey)
+        {
+        }
+
+        internal Achievements(HttpClient httpClient, string apiKey,
+            IJsonSerializerOptionsFactory jsonSerializerOptionsFactory)
+            : base(httpClient, apiKey, jsonSerializerOptionsFactory)
         {
         }
 

@@ -15,7 +15,7 @@ namespace ArtifactsMMO.NET.Objects.Items
 
         [JsonConstructor]
         internal Item(string name, string code, int level, ItemType type, string subtype, string description,
-            IReadOnlyCollection<Effect> effects, Craft craft)
+            bool tradeable, IReadOnlyCollection<Effect> effects, Craft craft)
         {
             Name = name;
             Code = code;
@@ -25,6 +25,7 @@ namespace ArtifactsMMO.NET.Objects.Items
             Description = description;
             Effects = effects;
             Craft = craft;
+            Tradeable = tradeable;
         }
 
         /// <summary>
@@ -56,6 +57,11 @@ namespace ArtifactsMMO.NET.Objects.Items
         /// Item description.
         /// </summary>
         public string Description { get; }
+
+        /// <summary>
+        /// Item tradeable status. A non-tradeable item cannot be exchanged or sold.
+        /// </summary>
+        public bool Tradeable { get; }
 
         /// <summary>
         /// List of object effects. For equipment, it will include item stats. (optional)

@@ -1,4 +1,5 @@
 ﻿using ArtifactsMMO.NET.Enums.ErrorCodes.Action;
+using ArtifactsMMO.NET.Internal;
 using ArtifactsMMO.NET.Objects;
 using ArtifactsMMO.NET.Objects.Characters;
 using ArtifactsMMO.NET.Objects.MyCharacter;
@@ -19,6 +20,12 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
     {
         private readonly IValidator<string> _nameValidator = new CharacterNameValidator();
         public MyCharacters(HttpClient httpClient, string apiKey) : base(httpClient, apiKey)
+        {
+        }
+
+        internal MyCharacters(HttpClient httpClient, string apiKey,
+            IJsonSerializerOptionsFactory jsonSerializerOptionsFactory)
+            : base(httpClient, apiKey, jsonSerializerOptionsFactory)
         {
         }
 

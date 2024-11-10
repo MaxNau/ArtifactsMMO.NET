@@ -1,4 +1,5 @@
 ﻿using ArtifactsMMO.NET.Enums.ErrorCodes.MyAccount;
+using ArtifactsMMO.NET.Internal;
 using ArtifactsMMO.NET.Objects;
 using ArtifactsMMO.NET.Objects.GrandExchange;
 using ArtifactsMMO.NET.Objects.Items;
@@ -15,6 +16,12 @@ namespace ArtifactsMMO.NET.Endpoints.MyAccount
     internal class MyAccount : ArtifactsMMOEndpoint, IMyAccount
     {
         public MyAccount(HttpClient httpClient, string apiKey) : base(httpClient, apiKey)
+        {
+        }
+
+        internal MyAccount(HttpClient httpClient, string apiKey,
+            IJsonSerializerOptionsFactory jsonSerializerOptionsFactory)
+            : base(httpClient, apiKey, jsonSerializerOptionsFactory)
         {
         }
 

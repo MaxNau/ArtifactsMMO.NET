@@ -1,10 +1,10 @@
 ﻿using ArtifactsMMO.NET.Errors;
+using ArtifactsMMO.NET.Internal;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,7 +20,7 @@ namespace ArtifactsMMO.NET.Http
     public class RestClient : IRestClient, IDisposable
     {
         private readonly HttpClient _httpClient;
-        private readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower };
+        private readonly JsonSerializerOptions _jsonSerializerOptions;
 
         private bool _disposedValue;
 
@@ -31,7 +31,23 @@ namespace ArtifactsMMO.NET.Http
         public RestClient(HttpClient httpClient)
         {
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-            _jsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.SnakeCaseLower));
+            _jsonSerializerOptions = new JsonSerializerOptionsFactory().Get(JsonSerializerOptionsMode.Default);
+            FixBaseAddress(_httpClient);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RestClient"/> class with the specified <see cref="HttpClient"/>.
+        /// </summary>
+        /// <remarks>
+        /// Used for testing
+        /// </remarks>
+        /// <param name="httpClient"></param>
+        /// <param name="jsonSerializerOptionsFactory"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        internal RestClient(HttpClient httpClient, IJsonSerializerOptionsFactory jsonSerializerOptionsFactory)
+        {
+            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            _jsonSerializerOptions = jsonSerializerOptionsFactory.Get(JsonSerializerOptionsMode.Test);
             FixBaseAddress(_httpClient);
         }
 

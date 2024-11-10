@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - Event => fixed Content property name and added missing Maps property
+- Character/Account leaderboard => added missing properties
+- Item => added missing Tradeable property
+- ActiveEvent => added missing Code property
+- [internal] changes for easier testing
 
 ## [3.0.3]
 

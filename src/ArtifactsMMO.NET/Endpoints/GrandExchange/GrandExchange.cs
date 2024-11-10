@@ -1,4 +1,5 @@
 ﻿using ArtifactsMMO.NET.Enums.ErrorCodes.GrandExchange;
+using ArtifactsMMO.NET.Internal;
 using ArtifactsMMO.NET.Objects;
 using ArtifactsMMO.NET.Objects.GrandExchange;
 using ArtifactsMMO.NET.Queries;
@@ -11,6 +12,12 @@ namespace ArtifactsMMO.NET.Endpoints.GrandExchange
     internal class GrandExchange : ArtifactsMMOEndpoint, IGrandExchange
     {
         public GrandExchange(HttpClient httpClient, string apiKey) : base(httpClient, apiKey)
+        {
+        }
+
+        internal GrandExchange(HttpClient httpClient, string apiKey,
+            IJsonSerializerOptionsFactory jsonSerializerOptionsFactory)
+            : base(httpClient, apiKey, jsonSerializerOptionsFactory)
         {
         }
 

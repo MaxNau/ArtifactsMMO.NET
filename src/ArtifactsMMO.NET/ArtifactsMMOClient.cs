@@ -12,6 +12,7 @@ using ArtifactsMMO.NET.Endpoints.MyCharacters;
 using ArtifactsMMO.NET.Endpoints.Resources;
 using ArtifactsMMO.NET.Endpoints.Tasks;
 using ArtifactsMMO.NET.Exceptions;
+using ArtifactsMMO.NET.Internal;
 using ArtifactsMMO.NET.Objects;
 using ArtifactsMMO.NET.Objects.Server;
 using System.Net.Http;
@@ -48,6 +49,24 @@ namespace ArtifactsMMO.NET
             Leaderboard = new Leaderboard(httpClient, apiKey);
             Resources = new Resources(httpClient, apiKey);
             MyCharacters = new MyCharacters(httpClient, apiKey);
+        }
+
+       internal ArtifactsMMOClient(HttpClient httpClient, string apiKey,
+            IJsonSerializerOptionsFactory jsonSerializerOptionsFactory)
+            : base(httpClient, apiKey, jsonSerializerOptionsFactory)
+        {
+            Maps = new Maps(httpClient, apiKey, jsonSerializerOptionsFactory);
+            Monsters = new Monsters(httpClient, apiKey, jsonSerializerOptionsFactory);
+            MyAccount = new MyAccount(httpClient, apiKey, jsonSerializerOptionsFactory);
+            Achievements = new Achievements(httpClient, apiKey, jsonSerializerOptionsFactory);
+            Items = new Items(httpClient, apiKey, jsonSerializerOptionsFactory);
+            GrandExchange = new GrandExchange(httpClient, apiKey, jsonSerializerOptionsFactory);
+            Tasks = new Tasks(httpClient, apiKey, jsonSerializerOptionsFactory);
+            Characters = new Characters(httpClient, apiKey, jsonSerializerOptionsFactory);
+            Events = new Events(httpClient, apiKey, jsonSerializerOptionsFactory);
+            Leaderboard = new Leaderboard(httpClient, apiKey, jsonSerializerOptionsFactory);
+            Resources = new Resources(httpClient, apiKey, jsonSerializerOptionsFactory);
+            MyCharacters = new MyCharacters(httpClient, apiKey, jsonSerializerOptionsFactory);
         }
 
         /// <summary>

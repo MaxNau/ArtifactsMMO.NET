@@ -12,10 +12,11 @@ namespace ArtifactsMMO.NET.Objects.Events
         internal ActiveEvent() { }
 
         [JsonConstructor]
-        internal ActiveEvent(string name, Map map, string previousSkin, long duration, DateTimeOffset expiration,
-            DateTimeOffset createdAt)
+        internal ActiveEvent(string name, string code, Map map, string previousSkin, long duration,
+            DateTimeOffset expiration, DateTimeOffset createdAt)
         {
             Name = name;
+            Code = code;
             Map = map;
             PreviousSkin = previousSkin;
             Duration = duration;
@@ -27,6 +28,11 @@ namespace ArtifactsMMO.NET.Objects.Events
         /// Name of the event.
         /// </summary>
         public string Name { get; }
+
+        /// <summary>
+        /// Code of the event. This is the event's unique identifier (ID).
+        /// </summary>
+        public string Code { get; }
 
         /// <summary>
         /// Map of the event.
