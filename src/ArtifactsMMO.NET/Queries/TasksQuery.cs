@@ -71,8 +71,10 @@ namespace ArtifactsMMO.NET.Queries
             }
 
             var queryStringBuilder = new QueryStringBuilder();
-            queryStringBuilder.AddParameter(JsonNamingPolicy.SnakeCaseLower.ConvertName(nameof(Type)), Type?.ToString().ToLower());
-            queryStringBuilder.AddParameter(JsonNamingPolicy.SnakeCaseLower.ConvertName(nameof(Skill)), Skill?.ToString().ToLower());
+            queryStringBuilder.AddParameter(JsonNamingPolicy.SnakeCaseLower.ConvertName(nameof(Type)),
+                JsonNamingPolicy.SnakeCaseLower.ConvertName(Type?.ToString() ?? string.Empty));
+            queryStringBuilder.AddParameter(JsonNamingPolicy.SnakeCaseLower.ConvertName(nameof(Skill)),
+                JsonNamingPolicy.SnakeCaseLower.ConvertName(Skill?.ToString() ?? string.Empty));
             queryStringBuilder.AddParameter(JsonNamingPolicy.SnakeCaseLower.ConvertName(nameof(MaxLevel)), MaxLevel?.ToString());
             queryStringBuilder.AddParameter(JsonNamingPolicy.SnakeCaseLower.ConvertName(nameof(MinLevel)), MinLevel?.ToString());
             queryStringBuilder.AddParameter(JsonNamingPolicy.SnakeCaseLower.ConvertName(nameof(Page)), Page?.ToString());

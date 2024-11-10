@@ -9,7 +9,12 @@ All notable changes to this project will be documented in this file.
 - Character/Account leaderboard => added missing properties
 - Item => added missing Tradeable property
 - ActiveEvent => added missing Code property
+- Fixed issue with queries containing enums as search parameters
 - [internal] changes for easier testing
+
+### Removed
+- SimpleTaskReward
+- ICharacters.GetAsync(CharactersQuery charactersQuery, CancellationToken cancellationToken);
 
 ## [3.0.3]
 

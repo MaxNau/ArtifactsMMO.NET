@@ -1,8 +1,6 @@
 ﻿using ArtifactsMMO.NET.Enums.ErrorCodes.Character;
 using ArtifactsMMO.NET.Internal;
-using ArtifactsMMO.NET.Objects;
 using ArtifactsMMO.NET.Objects.Characters;
-using ArtifactsMMO.NET.Queries;
 using ArtifactsMMO.NET.Requests;
 using ArtifactsMMO.NET.Validators;
 using System;
@@ -49,11 +47,6 @@ namespace ArtifactsMMO.NET.Endpoints.Characters
         {
             _nameValidator.Validate(name);
             return await GetAsync<Character, GetCharacterError>($"characters/{name}", cancellationToken).ConfigureAwait(false);
-        }
-
-        public async Task<PagedResponse<Character>> GetAsync(CharactersQuery charactersQuery, CancellationToken cancellationToken = default)
-        {
-            return await GetAsync<Character>("characters", charactersQuery, cancellationToken).ConfigureAwait(false);
         }
     }
 }

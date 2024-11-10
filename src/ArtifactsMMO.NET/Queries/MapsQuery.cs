@@ -60,7 +60,8 @@ namespace ArtifactsMMO.NET.Queries
 
             var queryStringBuilder = new QueryStringBuilder();
             queryStringBuilder.AddParameter(JsonNamingPolicy.SnakeCaseLower.ConvertName(nameof(ContentCode)), ContentCode);
-            queryStringBuilder.AddParameter(JsonNamingPolicy.SnakeCaseLower.ConvertName(nameof(ContentType)), ContentType?.ToString().ToLower());
+            queryStringBuilder.AddParameter(JsonNamingPolicy.SnakeCaseLower.ConvertName(nameof(ContentType)),
+                JsonNamingPolicy.SnakeCaseLower.ConvertName(ContentType?.ToString() ?? string.Empty));
             queryStringBuilder.AddParameter(JsonNamingPolicy.SnakeCaseLower.ConvertName(nameof(Page)), Page?.ToString());
             queryStringBuilder.AddParameter(JsonNamingPolicy.SnakeCaseLower.ConvertName(nameof(Size)), Size?.ToString());
 
