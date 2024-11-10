@@ -3,7 +3,7 @@ using ArtifactsMMO.NET.Queries;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.Maps
+namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.Items
 {
     public class ItemsEndpointTests : IClassFixture<TestFixture>
     {
@@ -19,16 +19,40 @@ namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.Maps
         [Fact]
         public async Task DefaultItemsQuery_ShouldReturnExpectedData()
         {
-            //Act
             var result = await _client.Items.GetAsync(new ItemsQuery());
-
-            //Assert
             Assert.NotNull(result);
             Assert.True(result.Total > 0);
             Assert.NotNull(result.Data);
-            var firstMap = result.Data.FirstOrDefault();
-            Assert.NotNull(firstMap);
+            var firstItem = result.Data.FirstOrDefault();
+            Assert.NotNull(firstItem);
         }
 
+        [Fact]
+        public async Task ItemsQuery_FilterByItemType_ShouldReturnExpectedData()
+        {
+            var result = await _client.Items.GetAsync(new ItemsQuery(type: ItemType.Boots));
+            Assert.NotNull(result);
+            Assert.True(result.Total > 0);
+            Assert.NotNull(result.Data);
+            Assert.True(result.Data.All(x => x.Type == ItemType.Boots));
+        }
+
+        [Fact]
+        public async Task ItemsQuery_FilterItemTypeAndMinLevel_ShouldReturnExpectedData()
+        {
+            var result = await _client.Items.GetAsync(new ItemsQuery(type: ItemType.Boots, minLevel: 20));
+            Assert.NotNull(result);
+            Assert.True(result.Total > 0);
+            Assert.NotNull(result.Data);
+            Assert.True(result.Data.All(x => x.Type == ItemType.Boots && x.Level >= 20));
+        }
+
+        [Fact]
+        public async Task GetMapByCoordinates_ShouldReturnExpectedData()
+        {
+            var (result, error) = await _client.Maps.GetAsync(0,0);
+            Assert.Null(error);
+            Assert.NotNull(result);
+        }
     }
 }
