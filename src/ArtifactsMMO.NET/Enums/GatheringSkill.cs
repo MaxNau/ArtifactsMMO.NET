@@ -18,6 +18,11 @@
         /// <summary>
         /// Fishing skill
         /// </summary>
-        Fishing
+        Fishing,
+
+        /// <summary>
+        /// Alchemy skill
+        /// </summary>
+        Alchemy
     }
 }
