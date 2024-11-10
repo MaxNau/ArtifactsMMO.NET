@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [3.0.4] [Unreleased]
+## [3.0.4]
 
 ### Fixed
 - Event => fixed Content property name and added missing Maps property
@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 - Item => added missing Tradeable property
 - ActiveEvent => added missing Code property
 - Fixed issue with queries containing enums as search parameters
+- Fixed issue with newly added requests
 - [internal] changes for easier testing
 
 ### Removed

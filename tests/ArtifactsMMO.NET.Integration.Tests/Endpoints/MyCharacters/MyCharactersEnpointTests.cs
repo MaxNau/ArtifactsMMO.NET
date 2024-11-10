@@ -118,9 +118,15 @@ namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.MyCharacters
 
             await WaitAsync(moveData.result.Cooldown.StartedAt, moveData.result.Cooldown.Expiration);
 
-            var fightData = await _client.MyCharacters.FightAsync(_characterTestFixture.CharacterName);
+            // get gold for further tests
+            var gold = 0;
+            while (gold == 0)
+            {
+                var fightData = await _client.MyCharacters.FightAsync(_characterTestFixture.CharacterName);
 
-            await WaitAsync(fightData.result.Cooldown.StartedAt, fightData.result.Cooldown.Expiration);
+                await WaitAsync(fightData.result.Cooldown.StartedAt, fightData.result.Cooldown.Expiration);
+                gold = fightData.result.Character.Gold;
+            }
 
             var restData = await _client.MyCharacters.RestAsync(_characterTestFixture.CharacterName);
 
@@ -248,6 +254,28 @@ namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.MyCharacters
         }
 
         [Fact, Priority(11)]
+        public async Task CharacterCanDepositGold()
+        {
+            var depositData = await _client.MyCharacters.DepositBankGoldAsync(_characterTestFixture.CharacterName,
+             new DepositBankGoldRequest(
+                    1
+                 ));
+
+            await WaitAsync(depositData.result.Cooldown.StartedAt, depositData.result.Cooldown.Expiration);
+        }
+
+        [Fact, Priority(12)]
+        public async Task CharacterCanWithdrawGold()
+        {
+            var withdrawData = await _client.MyCharacters.WithdrawBankGoldAsync(_characterTestFixture.CharacterName,
+             new WithdrawBankGoldRequest(
+                 1
+                 ));
+
+            await WaitAsync(withdrawData.result.Cooldown.StartedAt, withdrawData.result.Cooldown.Expiration);
+        }
+
+        [Fact, Priority(13)]
         public async Task CharacterCanUseItem()
         {
             var useItemData = await _client.MyCharacters.UseItemAsync(_characterTestFixture.CharacterName,
@@ -259,40 +287,40 @@ namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.MyCharacters
             await WaitAsync(useItemData.result.Cooldown.StartedAt, useItemData.result.Cooldown.Expiration);
         }
 
-        //[Fact, Priority(12)]
-        //public async Task CharacterCanCreateAndCancelSellOrder()
-        //{
-        //    var geLocations = await _client.Maps.GetAsync(
-        //        new MapsQuery(
-        //        contentType: MapContentType.GrandExchange
-        //    ));
+        [Fact, Priority(14)]
+        public async Task CharacterCanCreateAndCancelSellOrder()
+        {
+            var geLocations = await _client.Maps.GetAsync(
+                new MapsQuery(
+                contentType: MapContentType.GrandExchange
+            ));
 
-        //    var geLocation = geLocations.Data.First();
+            var geLocation = geLocations.Data.First();
 
-        //    var moveData = await _client.MyCharacters.MoveAsync(
-        //        _characterTestFixture.CharacterName,
-        //        new MoveRequest(geLocation.X, geLocation.Y));
+            var moveData = await _client.MyCharacters.MoveAsync(
+                _characterTestFixture.CharacterName,
+                new MoveRequest(geLocation.X, geLocation.Y));
 
-        //    await WaitAsync(moveData.result.Cooldown.StartedAt, moveData.result.Cooldown.Expiration);
+            await WaitAsync(moveData.result.Cooldown.StartedAt, moveData.result.Cooldown.Expiration);
 
-        //    var sellData = await _client.MyCharacters.GrandExchangeCreateSellOrderAsync(_characterTestFixture.CharacterName,
-        //        new GrandExchangeCreateSellOrderRequest
-        //        (
-        //            "gudgeon",
-        //            1,
-        //            1
-        //        ));
+            var sellData = await _client.MyCharacters.GrandExchangeCreateSellOrderAsync(_characterTestFixture.CharacterName,
+                new GrandExchangeCreateSellOrderRequest
+                (
+                    "gudgeon",
+                    1,
+                    1
+                ));
 
-        //    await WaitAsync(sellData.result.Cooldown.StartedAt, sellData.result.Cooldown.Expiration);
+            await WaitAsync(sellData.result.Cooldown.StartedAt, sellData.result.Cooldown.Expiration);
 
-        //    var cancellOrderData = await _client.MyCharacters.GrandExchangeCancelSellOrderAsync(_characterTestFixture.CharacterName,
-        //        new GrandExchangeCancelSellOrderRequest
-        //        (
-        //            sellData.result.Order.Id
-        //        ));
+            var cancellOrderData = await _client.MyCharacters.GrandExchangeCancelSellOrderAsync(_characterTestFixture.CharacterName,
+                new GrandExchangeCancelSellOrderRequest
+                (
+                    sellData.result.Order.Id
+                ));
 
-        //    await WaitAsync(cancellOrderData.result.Cooldown.StartedAt, cancellOrderData.result.Cooldown.Expiration);
-        //}
+            await WaitAsync(cancellOrderData.result.Cooldown.StartedAt, cancellOrderData.result.Cooldown.Expiration);
+        }
 
         [Fact, Priority(99)]
         public async Task DeleteCharacter_ShouldSucceed()
