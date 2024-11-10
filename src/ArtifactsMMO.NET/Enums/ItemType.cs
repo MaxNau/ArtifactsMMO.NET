@@ -63,7 +63,12 @@
         /// <summary>
         /// Currency used for transactions within the game.
         /// </summary>
-        Currency
+        Currency,
+
+        /// <summary>
+        /// Consumables
+        /// </summary>
+        Consumable
     }
 
 }
