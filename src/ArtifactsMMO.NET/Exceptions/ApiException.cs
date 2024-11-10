@@ -14,7 +14,7 @@ namespace ArtifactsMMO.NET.Exceptions
         /// <param name="message">A message describing the error.</param>
         /// <param name="contentAsString">The content returned from the API as a string.</param>
         internal ApiException(int statusCode, string message, string contentAsString)
-            : base(message)
+            : base($"{statusCode} {message} {contentAsString}")
         {
             StatusCode = statusCode;
             ContentAsString = contentAsString;

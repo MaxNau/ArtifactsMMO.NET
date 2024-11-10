@@ -18,6 +18,9 @@ namespace ArtifactsMMO.NET.Requests
     [JsonDerivedType(typeof(TaskTradeRequest))]
     [JsonDerivedType(typeof(WithdrawBankGoldRequest))]
     [JsonDerivedType(typeof(WithdrawBankRequest))]
+    [JsonDerivedType(typeof(UseItemRequest))]
+    [JsonDerivedType(typeof(GrandExchangeCreateSellOrderRequest))]
+    [JsonDerivedType(typeof(GrandExchangeCancelSellOrderRequest))]
     internal interface IRequest
     {
     }
