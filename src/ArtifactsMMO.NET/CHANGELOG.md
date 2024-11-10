@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.4] [Unreleased]
+
+### Fixed
+- Event => fixed Content property name and added missing Maps property
+
+## [3.0.3]
+
+### Fixed
+- Fix missing enum values for ItemType and GatheringSkill
+
+## [3.0.2]
+
+### Fixed
+- Fix item type enum values
+
+## [3.0.1]
+
+### Fixed
+- Fixed cooldown reason enum values
+
 ## [3.0.0] - 2024-11-09
 
 ### Added
