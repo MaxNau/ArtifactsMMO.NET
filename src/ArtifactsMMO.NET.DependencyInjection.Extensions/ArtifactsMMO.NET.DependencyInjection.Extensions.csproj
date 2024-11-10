@@ -7,9 +7,9 @@
     <Authors>Maksym Naumov</Authors>
     <Description>Artifacts MMO client dependency injection extensions</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <VersionPrefix>3.0.2</VersionPrefix>
-    <FileVersion>3.0.2</FileVersion>
-    <AssemblyVersion>3.0.2</AssemblyVersion>
+    <VersionPrefix>3.0.3</VersionPrefix>
+    <FileVersion>3.0.3</FileVersion>
+    <AssemblyVersion>3.0.3</AssemblyVersion>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/MaxNau/ArtifactsMMO.NET</PackageProjectUrl>
@@ -51,7 +51,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ArtifactsMMO.NET" Version="3.0.2" />
+    <PackageReference Include="ArtifactsMMO.NET" Version="3.0.3" />
   </ItemGroup>
 
 </Project>
