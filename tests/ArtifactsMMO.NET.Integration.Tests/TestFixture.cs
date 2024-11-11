@@ -20,7 +20,7 @@ namespace ArtifactsMMO.NET.Integration.Tests
             var services = new ServiceCollection();
 
             services.AddSingleton(Configuration);
-            services.AddArtifactsMMOClient(Configuration["AppSettings:ApiKey"]);
+            services.AddArtifactsMMOClientForTest(Configuration["AppSettings:ApiKey"]);
 
             ServiceProvider = services.BuildServiceProvider();
         }

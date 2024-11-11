@@ -1,9 +1,9 @@
 ﻿using ArtifactsMMO.NET.Endpoints.Accounts;
 using ArtifactsMMO.NET.Endpoints.Assets;
 using ArtifactsMMO.NET.Endpoints.Token;
+using ArtifactsMMO.NET.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Net;
 using System.Net.Http;
 
 namespace ArtifactsMMO.NET.DependencyInjection.Extensions
@@ -69,6 +69,19 @@ namespace ArtifactsMMO.NET.DependencyInjection.Extensions
         {
             var client = CreateAndConfigureHttpClient();
             services.AddSingleton<IArtifactsMMOAssetsClient>(new ArtifactsMMOAssetsClient(client));
+
+            return services;
+        }
+
+        internal static IServiceCollection AddArtifactsMMOClientForTest(this IServiceCollection services, string apiKey)
+        {
+            if (string.IsNullOrWhiteSpace(apiKey))
+            {
+                throw new ArgumentNullException(nameof(apiKey));
+            }
+
+            var client = CreateAndConfigureHttpClient();
+            services.AddSingleton<IArtifactsMMOClient>(new ArtifactsMMOClient(client, apiKey, new JsonSerializerOptionsFactory()));
 
             return services;
         }
