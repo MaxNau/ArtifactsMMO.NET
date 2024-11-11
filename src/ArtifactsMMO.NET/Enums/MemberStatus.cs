@@ -18,7 +18,7 @@
         /// <summary>
         /// Indicates that the member is a founder with VIP status.
         /// </summary>
-        VIPFounder,
+        VipFounder,
 
         /// <summary>
         /// Indicates that the member is a founder.

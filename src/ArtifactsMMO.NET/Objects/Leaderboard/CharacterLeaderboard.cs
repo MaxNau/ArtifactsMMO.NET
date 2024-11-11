@@ -16,8 +16,9 @@ namespace ArtifactsMMO.NET.Objects.Leaderboard
             int woodcuttingTotalXp, int fishingLevel, int fishingTotalXp, int weaponcraftingLevel,
             int weaponcraftingTotalXp, int gearcraftingLevel, int gearcraftingTotalXp,
             int jewelrycraftingLevel, int jewelrycraftingTotalXp, int cookingLevel, int cookingTotalXp,
-            int gold)
+            int alchemyLevel, int alchemyTotalXp, int gold, int position, string account)
         {
+            Position = position;
             Name = name;
             Skin = skin;
             AchievementsPoints = achievementsPoints;
@@ -38,12 +39,25 @@ namespace ArtifactsMMO.NET.Objects.Leaderboard
             CookingLevel = cookingLevel;
             CookingTotalXp = cookingTotalXp;
             Gold = gold;
+            Account = account;
+            AlchemyLevel = alchemyLevel;
+            AlchemyTotalXp = alchemyTotalXp;
         }
+
+        /// <summary>
+        /// Position in the leaderboard.
+        /// </summary>
+        public int Position { get; }
 
         /// <summary>
         /// Character name.
         /// </summary>
         public string Name { get; }
+
+        /// <summary>
+        /// Account name.
+        /// </summary>
+        public string Account { get; }
 
         /// <summary>
         /// Character skin code.
@@ -134,6 +148,17 @@ namespace ArtifactsMMO.NET.Objects.Leaderboard
         /// Cooking total xp.
         /// </summary>
         public int CookingTotalXp { get; }
+
+
+        /// <summary>
+        /// Alchemy level.
+        /// </summary>
+        public int AlchemyLevel { get; }
+
+        /// <summary>
+        /// Alchemy total xp.
+        /// </summary>
+        public int AlchemyTotalXp { get; }
 
         /// <summary>
         /// The numbers of gold on this character.

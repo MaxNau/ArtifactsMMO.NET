@@ -49,15 +49,5 @@ namespace ArtifactsMMO.NET.Endpoints.Characters
         /// The task result contains a tuple with the <see cref="Character"/> and an optional <see cref="GetCharacterError"/>.</returns>
         /// <exception cref="ApiException"></exception>
         Task<(Character result, GetCharacterError? error)> GetAsync(string name, CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Fetch characters details.
-        /// </summary>
-        /// <param name="charactersQuery">The query <see cref="CharactersQuery"/> to filter characters.</param>
-        /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
-        /// <returns>A task representing the asynchronous operation.
-        /// The task result contains a <see cref="PagedResponse{Character}"/> containing the filtered characters.</returns>
-        /// <exception cref="ApiException"></exception>
-        Task<PagedResponse<Character>> GetAsync(CharactersQuery charactersQuery, CancellationToken cancellationToken = default);
     }
 }

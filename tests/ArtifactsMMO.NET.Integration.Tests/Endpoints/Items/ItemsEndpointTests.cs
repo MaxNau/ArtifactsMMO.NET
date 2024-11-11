@@ -1,4 +1,5 @@
 ﻿using ArtifactsMMO.NET.Enums;
+using ArtifactsMMO.NET.Integration.Tests.Helpers;
 using ArtifactsMMO.NET.Queries;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -53,6 +54,15 @@ namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.Items
             var (result, error) = await _client.Maps.GetAsync(0,0);
             Assert.Null(error);
             Assert.NotNull(result);
+        }
+
+        [Fact]
+        public async Task AllData_ShouldReturnExpectedData()
+        {
+            await PagedDataLoader.GetAllDataAsync(async (page, pageSize) =>
+            {
+                return await _client.Items.GetAsync(new ItemsQuery(page: page, size: pageSize));
+            });
         }
     }
 }

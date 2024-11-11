@@ -1,4 +1,5 @@
 ﻿using ArtifactsMMO.NET.Enums.ErrorCodes.Monsters;
+using ArtifactsMMO.NET.Internal;
 using ArtifactsMMO.NET.Objects;
 using ArtifactsMMO.NET.Objects.Monsters;
 using ArtifactsMMO.NET.Queries;
@@ -12,6 +13,12 @@ namespace ArtifactsMMO.NET.Endpoints.Monsters
     {
         private readonly string _resource = "monsters";
         public Monsters(HttpClient httpClient, string apiKey) : base(httpClient, apiKey)
+        {
+        }
+
+        internal Monsters(HttpClient httpClient, string apiKey,
+            IJsonSerializerOptionsFactory jsonSerializerOptionsFactory)
+            : base(httpClient, apiKey, jsonSerializerOptionsFactory)
         {
         }
 

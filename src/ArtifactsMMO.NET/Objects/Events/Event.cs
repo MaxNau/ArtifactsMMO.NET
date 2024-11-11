@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.Objects.Events
 {
@@ -11,14 +12,15 @@ namespace ArtifactsMMO.NET.Objects.Events
 
         [JsonConstructor]
         internal Event(string code, string name, string skin, long duration, int rate,
-            EventConten conten)
+            EventConten content, IReadOnlyCollection<EventMap> maps)
         {
             Name = name;
             Duration = duration;
             Code = code;
             Skin = skin;
             Rate = rate;
-            Content = conten;
+            Content = content;
+            Maps = maps;
         }
 
         /// <summary>
@@ -50,5 +52,10 @@ namespace ArtifactsMMO.NET.Objects.Events
         /// Content of the event.
         /// </summary>
         public EventConten Content { get; }
+
+        /// <summary>
+        /// Map list of the event.
+        /// </summary>
+        public IReadOnlyCollection<EventMap> Maps { get; }
     }
 }

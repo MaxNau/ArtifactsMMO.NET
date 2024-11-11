@@ -1,4 +1,5 @@
 ﻿using ArtifactsMMO.NET.Enums.ErrorCodes.Character;
+using ArtifactsMMO.NET.Internal;
 using ArtifactsMMO.NET.Objects;
 using ArtifactsMMO.NET.Objects.Maps;
 using ArtifactsMMO.NET.Queries;
@@ -13,6 +14,12 @@ namespace ArtifactsMMO.NET.Endpoints.Maps
         private readonly string _resource = "maps";
 
         public Maps(HttpClient httpClient, string apiKey) : base(httpClient, apiKey)
+        {
+        }
+
+        internal Maps(HttpClient httpClient, string apiKey,
+            IJsonSerializerOptionsFactory jsonSerializerOptionsFactory)
+            : base(httpClient, apiKey, jsonSerializerOptionsFactory)
         {
         }
 

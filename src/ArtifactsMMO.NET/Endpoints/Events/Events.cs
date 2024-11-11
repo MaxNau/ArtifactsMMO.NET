@@ -1,4 +1,5 @@
-﻿using ArtifactsMMO.NET.Objects;
+﻿using ArtifactsMMO.NET.Internal;
+using ArtifactsMMO.NET.Objects;
 using ArtifactsMMO.NET.Objects.Events;
 using ArtifactsMMO.NET.Queries;
 using System.Net.Http;
@@ -12,6 +13,13 @@ namespace ArtifactsMMO.NET.Endpoints.Events
         public Events(HttpClient httpClient, string apiKey) : base(httpClient, apiKey)
         {
         }
+
+        internal Events(HttpClient httpClient, string apiKey,
+            IJsonSerializerOptionsFactory jsonSerializerOptionsFactory)
+            : base(httpClient, apiKey, jsonSerializerOptionsFactory)
+        {
+        }
+
         public async Task<PagedResponse<Event>> GetAllAsync(EventsQuery eventsQuery,
             CancellationToken cancellationToken = default)
         {

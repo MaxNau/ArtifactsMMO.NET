@@ -1,5 +1,6 @@
 ﻿using ArtifactsMMO.NET.Endpoints.Tasks.TaskRewards;
 using ArtifactsMMO.NET.Enums.ErrorCodes.Tasks;
+using ArtifactsMMO.NET.Internal;
 using ArtifactsMMO.NET.Objects;
 using ArtifactsMMO.NET.Queries;
 using System.Net.Http;
@@ -15,6 +16,13 @@ namespace ArtifactsMMO.NET.Endpoints.Tasks
         public Tasks(HttpClient httpClient, string apiKey) : base(httpClient, apiKey)
         {
             TaskRewards = new TasksRewards(httpClient, apiKey);
+        }
+
+        internal Tasks(HttpClient httpClient, string apiKey,
+            IJsonSerializerOptionsFactory jsonSerializerOptionsFactory)
+            : base(httpClient, apiKey, jsonSerializerOptionsFactory)
+        {
+            TaskRewards = new TasksRewards(httpClient, apiKey, jsonSerializerOptionsFactory);
         }
 
         public ITasksRewards TaskRewards { get; }

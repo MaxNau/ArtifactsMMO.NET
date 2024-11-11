@@ -1,4 +1,5 @@
-﻿using ArtifactsMMO.NET.Objects;
+﻿using ArtifactsMMO.NET.Internal;
+using ArtifactsMMO.NET.Objects;
 using ArtifactsMMO.NET.Objects.Leaderboard;
 using ArtifactsMMO.NET.Queries;
 using System.Net.Http;
@@ -10,6 +11,12 @@ namespace ArtifactsMMO.NET.Endpoints.Leaderboard
     internal class Leaderboard : ArtifactsMMOEndpoint, ILeaderboard
     {
         public Leaderboard(HttpClient httpClient, string apiKey) : base(httpClient, apiKey)
+        {
+        }
+
+        internal Leaderboard(HttpClient httpClient, string apiKey,
+            IJsonSerializerOptionsFactory jsonSerializerOptionsFactory)
+            : base(httpClient, apiKey, jsonSerializerOptionsFactory)
         {
         }
 

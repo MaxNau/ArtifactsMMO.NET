@@ -11,11 +11,12 @@ namespace ArtifactsMMO.NET.Objects.Tasks
         internal SimpleTask() { }
 
         [JsonConstructor]
-        internal SimpleTask(string code, TaskType type, int total)
+        internal SimpleTask(string code, TaskType type, int total, TaskRewards rewards)
         {
             Code = code;
             Type = type;
             Total = total;
+            Rewards = rewards;
         }
 
         /// <summary>
@@ -32,5 +33,10 @@ namespace ArtifactsMMO.NET.Objects.Tasks
         /// The total required to complete the task.
         /// </summary>
         public int Total { get; }
+
+        /// <summary>
+        /// Rewards for completing the task.
+        /// </summary>
+        public TaskRewards Rewards { get; }
     }
 }

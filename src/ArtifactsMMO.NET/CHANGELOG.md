@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.4]
+
+### Fixed
+- Event => fixed Content property name and added missing Maps property
+- Character/Account leaderboard => added missing properties
+- Item => added missing Tradeable property
+- ActiveEvent => added missing Code property
+- Fixed issue with queries containing enums as search parameters
+- Fixed issue with newly added requests
+- [internal] changes for easier testing
+
+### Removed
+- SimpleTaskReward
+- ICharacters.GetAsync(CharactersQuery charactersQuery, CancellationToken cancellationToken);
+
+## [3.0.3]
+
+### Fixed
+- Fix missing enum values for ItemType and GatheringSkill
+
+## [3.0.2]
+
+### Fixed
+- Fix item type enum values
+
+## [3.0.1]
+
+### Fixed
+- Fixed cooldown reason enum values
+
 ## [3.0.0] - 2024-11-09
 
 ### Added
