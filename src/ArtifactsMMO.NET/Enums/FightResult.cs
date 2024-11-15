@@ -13,6 +13,6 @@
         /// <summary>
         /// Indicates that the character lost the fight.
         /// </summary>
-        Lose
+        Loss
     }
 }
