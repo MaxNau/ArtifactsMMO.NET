@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.5]
+
+### Fixed
+- FightResult Lose value changed to Loss
+
 ## [3.0.4]
 
 ### Fixed
