@@ -98,6 +98,11 @@
         /// <summary>
         /// Cooldown due to buying bank expansion
         /// </summary>
-        BuyBankExpansion
+        BuyBankExpansion,
+
+        /// <summary>
+        /// Cooldown to Christmas Exchange action
+        /// </summary>
+        ChristmasExchange
     }
 }

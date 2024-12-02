@@ -14,6 +14,7 @@ using ArtifactsMMO.NET.Objects.Server;
 using System.Threading.Tasks;
 using System.Threading;
 using ArtifactsMMO.NET.Endpoints.MyCharacters;
+using ArtifactsMMO.NET.Endpoints.Badges;
 
 namespace ArtifactsMMO.NET
 {
@@ -95,5 +96,10 @@ namespace ArtifactsMMO.NET
         /// Provides access to character actions.
         /// </summary>
         IMyCharacters MyCharacters { get; }
+
+        /// <summary>
+        /// Provides access to badge-realted functionality.
+        /// </summary>
+        IBadges Badges { get; }
     }
 }

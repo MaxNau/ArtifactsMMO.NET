@@ -1,5 +1,6 @@
 ﻿using ArtifactsMMO.NET.Endpoints;
 using ArtifactsMMO.NET.Endpoints.Achievements;
+using ArtifactsMMO.NET.Endpoints.Badges;
 using ArtifactsMMO.NET.Endpoints.Characters;
 using ArtifactsMMO.NET.Endpoints.Events;
 using ArtifactsMMO.NET.Endpoints.GrandExchange;
@@ -49,6 +50,7 @@ namespace ArtifactsMMO.NET
             Leaderboard = new Leaderboard(httpClient, apiKey);
             Resources = new Resources(httpClient, apiKey);
             MyCharacters = new MyCharacters(httpClient, apiKey);
+            Badges = new Badges(httpClient, apiKey);
         }
 
        internal ArtifactsMMOClient(HttpClient httpClient, string apiKey,
@@ -67,6 +69,7 @@ namespace ArtifactsMMO.NET
             Leaderboard = new Leaderboard(httpClient, apiKey, jsonSerializerOptionsFactory);
             Resources = new Resources(httpClient, apiKey, jsonSerializerOptionsFactory);
             MyCharacters = new MyCharacters(httpClient, apiKey, jsonSerializerOptionsFactory);
+            Badges = new Badges(httpClient, apiKey, jsonSerializerOptionsFactory);
         }
 
         /// <summary>
@@ -148,5 +151,10 @@ namespace ArtifactsMMO.NET
         /// <inheritdoc/>
         /// </summary>
         public IMyCharacters MyCharacters { get; }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public IBadges Badges { get; }
     }
 }
