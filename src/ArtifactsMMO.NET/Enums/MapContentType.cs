@@ -33,6 +33,12 @@
         /// <summary>
         /// Tasks or quests that can be completed on the map.
         /// </summary>
-        TasksMaster
+        TasksMaster,
+
+        /// <summary>
+        /// Santa provide quest to the nice characters in this world.
+        /// Seasonal content type
+        /// </summary>
+        SantaClaus
     }
 }
