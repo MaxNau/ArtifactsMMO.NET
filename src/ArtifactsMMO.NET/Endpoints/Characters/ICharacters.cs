@@ -1,7 +1,5 @@
 ﻿using ArtifactsMMO.NET.Enums.ErrorCodes.Character;
 using ArtifactsMMO.NET.Objects.Characters;
-using ArtifactsMMO.NET.Objects;
-using ArtifactsMMO.NET.Queries;
 using ArtifactsMMO.NET.Requests;
 using System.Threading.Tasks;
 using System.Threading;
