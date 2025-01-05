@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using ArtifactsMMO.NET.Endpoints.MyCharacters;
 using ArtifactsMMO.NET.Endpoints.Badges;
+using ArtifactsMMO.NET.Endpoints.Notifications;
 
 namespace ArtifactsMMO.NET
 {
@@ -101,5 +102,10 @@ namespace ArtifactsMMO.NET
         /// Provides access to badge-realted functionality.
         /// </summary>
         IBadges Badges { get; }
+
+        /// <summary>
+        /// Provide access to the real time notifications(founder & subscribers only)
+        /// </summary>
+        INotifications Notifications { get; set; }
     }
 }
