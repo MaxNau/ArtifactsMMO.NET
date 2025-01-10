@@ -1,11 +1,13 @@
 ﻿using ArtifactsMMO.NET.Endpoints.Notifications;
 using ArtifactsMMO.NET.Enums;
 using ArtifactsMMO.NET.Requests;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 using Xunit.Priority;
 
-namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.MyCharacters
+namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.Notifications
 {
     public class NotificationsEnpointTests : IClassFixture<TestFixture>
     {
