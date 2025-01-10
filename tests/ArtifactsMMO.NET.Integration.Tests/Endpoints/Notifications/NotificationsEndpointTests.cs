@@ -9,13 +9,13 @@ using Xunit.Priority;
 
 namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.Notifications
 {
-    public class NotificationsEnpointTests : IClassFixture<TestFixture>
+    public class NotificationsEndpointTests : IClassFixture<TestFixture>
     {
         private readonly IArtifactsMMOClient _client;
         private readonly IConfiguration _configuration;
 
 
-        public NotificationsEnpointTests(TestFixture fixture)
+        public NotificationsEndpointTests(TestFixture fixture)
         {
             _client = fixture.ServiceProvider.GetRequiredService<IArtifactsMMOClient>();
             _configuration = fixture.Configuration;

@@ -50,7 +50,7 @@ namespace ArtifactsMMO.NET.WebSockets
 
         /// <summary>
         /// Send a message without going through the queue. Note: .Net doesn't support parallel message.
-        /// This allow to wait
+        /// This allows to wait
         /// </summary>
         /// <param name="realTimeMessage">The message to send</param>
         /// <returns></returns>

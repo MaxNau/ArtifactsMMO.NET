@@ -13,6 +13,10 @@ namespace ArtifactsMMO.NET.Requests
         /// </summary>
         public IEnumerable<NotificationType> NotificationTypes { get; }
 
+        /// <summary>
+        /// Constructs a new request to open a websocket, with a given list of notification types to register
+        /// </summary>
+        /// <param name="notificationTypes"></param>
         public OpenNotificationsChannelRequest(params NotificationType[] notificationTypes)
         {
             NotificationTypes = notificationTypes;

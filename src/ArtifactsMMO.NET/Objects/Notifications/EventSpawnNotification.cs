@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.Json.Serialization;
-
-using ArtifactsMMO.NET.Enums;
+﻿using ArtifactsMMO.NET.Enums;
 using ArtifactsMMO.NET.Objects.Events;
+using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.Objects.Notifications
 {
     /// <summary>
     /// Notification about a new event
     /// </summary>
-    public class EventSpawnNotification: ServerNotification
+    public class EventSpawnNotification : ServerNotification
     {
         /// <summary>
         /// The active event
@@ -24,7 +20,7 @@ namespace ArtifactsMMO.NET.Objects.Notifications
         /// <param name="type">Notification type</param>
         /// <param name="data">Active event</param>
         [JsonConstructor]
-        public EventSpawnNotification(NotificationType type, ActiveEvent data )
+        public EventSpawnNotification(NotificationType type, ActiveEvent data)
             : base(type)
         {
             Data = data;

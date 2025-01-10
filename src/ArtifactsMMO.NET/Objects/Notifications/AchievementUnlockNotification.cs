@@ -1,8 +1,6 @@
 ﻿using ArtifactsMMO.NET.Enums;
-using ArtifactsMMO.NET.Objects.Events;
-using System.Text.Json.Serialization;
-
 using ArtifactsMMO.NET.Objects.Achievements;
+using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.Objects.Notifications
 {
