@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Artifacts MMO client</Title>
     <Authors>Maksym Naumov</Authors>
@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="8.0.5" />
+    <PackageReference Include="Websocket.Client" Version="5.1.2" />
   </ItemGroup>
 
   <ItemGroup>
