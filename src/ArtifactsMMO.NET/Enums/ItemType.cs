@@ -68,7 +68,16 @@
         /// <summary>
         /// Consumables
         /// </summary>
-        Consumable
-    }
+        Consumable,
 
+        /// <summary>
+        /// Rune
+        /// </summary>
+        Rune,
+
+        /// <summary>
+        /// Bag
+        /// </summary>
+        Bag,
+    }
 }
