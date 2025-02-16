@@ -24,7 +24,7 @@ namespace ArtifactsMMO.NET.Objects.Events
         }
 
         /// <summary>
-        /// Code of the event. This is the event's unique identifier (ID).
+        /// Code of the event.
         /// </summary>
         public string Code { get; }
 
