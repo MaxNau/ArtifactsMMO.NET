@@ -306,16 +306,5 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
         /// The task result contains a read-only collection of <see cref="Character"/> instances.</returns>
         /// <exception cref="ApiException"></exception>
         Task<IReadOnlyCollection<Character>> GetMyCharactersAsync(CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Exchange 1 gift for a random reward
-        /// </summary>
-        /// <param name="name">The name of the character exchanging task rewards.</param>
-        /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
-        /// <returns>A task representing the asynchronous operation.
-        /// The task result contains a tuple with the <see cref="TaskRewardData"/>
-        /// and an optional <see cref="TaskExchangeError"/>.</returns>
-        /// <exception cref="ApiException"></exception>
-        Task<(TaskRewardData result, TaskExchangeError? error)> ChristmasExchangeAsync(string name, CancellationToken cancellationToken = default);
     }
 }

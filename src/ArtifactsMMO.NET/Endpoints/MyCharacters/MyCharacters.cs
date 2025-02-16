@@ -176,11 +176,5 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
         {
             return await GetAsync<IReadOnlyCollection<Character>>($"my/characters", cancellationToken).ConfigureAwait(false);
         }
-
-        public async Task<(TaskRewardData result, TaskExchangeError? error)> ChristmasExchangeAsync(string name, CancellationToken cancellationToken = default)
-        {
-            _nameValidator.Validate(name);
-            return await PostAsync<TaskRewardData, TaskExchangeError>($"my/{name}/action/christmas/exchange", null, cancellationToken).ConfigureAwait(false);
-        }
     }
 }
