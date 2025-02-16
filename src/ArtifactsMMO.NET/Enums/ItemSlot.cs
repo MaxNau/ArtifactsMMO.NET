@@ -73,6 +73,16 @@
         /// <summary>
         /// Second utility slot
         /// </summary>
-        Utility2
+        Utility2,
+
+        /// <summary>
+        /// Bag slot
+        /// </summary>
+        Bag,
+
+        /// <summary>
+        /// Rune slot
+        /// </summary>
+        Rune,
     }
 }
