@@ -10,16 +10,16 @@ namespace ArtifactsMMO.NET.Objects.Effects
         internal Effect() { }
 
         [JsonConstructor]
-        internal Effect(string name, int value)
+        internal Effect(string code, int value)
         {
-            Name = name;
+            Code = code;
             Value = value;
         }
 
         /// <summary>
-        /// Effect name.
+        /// Effect code.
         /// </summary>
-        public string Name { get; }
+        public string Code { get; }
 
         /// <summary>
         /// Effect value.
