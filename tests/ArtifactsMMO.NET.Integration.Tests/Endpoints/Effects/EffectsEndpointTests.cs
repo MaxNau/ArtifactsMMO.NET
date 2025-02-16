@@ -1,6 +1,5 @@
 ﻿using ArtifactsMMO.NET.Integration.Tests.Helpers;
 using ArtifactsMMO.NET.Queries;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.Effects
