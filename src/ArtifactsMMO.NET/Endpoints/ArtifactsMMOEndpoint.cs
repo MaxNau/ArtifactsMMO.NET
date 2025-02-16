@@ -11,7 +11,6 @@ using System.Text.Json;
 using ArtifactsMMO.NET.Errors;
 using ArtifactsMMO.NET.Exceptions;
 using System.Text;
-using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.Endpoints
 {

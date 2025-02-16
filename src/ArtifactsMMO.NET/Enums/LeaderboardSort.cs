@@ -51,11 +51,6 @@
         AchievementsPoints,
 
         /// <summary>
-        /// Sort by the amount of gold held.
-        /// </summary>
-        Gold,
-
-        /// <summary>
         /// Sort by alchemy skill level.
         /// </summary>
         Alchemy
