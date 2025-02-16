@@ -103,6 +103,16 @@
         /// <summary>
         /// Cooldown to Christmas Exchange action
         /// </summary>
-        ChristmasExchange
+        ChristmasExchange,
+
+        /// <summary>
+        /// Cooldown due to buying from NPC
+        /// </summary>
+        BuyNpc,
+
+        /// <summary>
+        /// Cooldown due to selling to NPC
+        /// </summary>
+        SellNpc,
     }
 }
