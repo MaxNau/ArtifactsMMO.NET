@@ -1,29 +1,48 @@
-﻿using System.Text.Json.Serialization;
+﻿using ArtifactsMMO.NET.Enums;
+using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.Objects.Effects
 {
     /// <summary>
-    ///  Effect details
+    /// Effect details
     /// </summary>
     public class Effect
     {
         internal Effect() { }
 
         [JsonConstructor]
-        internal Effect(string code, int value)
+        internal Effect(string name, string code, string description, EffectType type, EffectSubtype subtype)
         {
+            Name = name;
             Code = code;
-            Value = value;
+            Description = description;
+            Type = type;
+            Subtype = subtype;
         }
 
         /// <summary>
-        /// Effect code.
+        /// Name of the effect
+        /// </summary>
+        public string Name { get; }
+
+        /// <summary>
+        /// The code of the effect. This is the effect's unique identifier (ID).
         /// </summary>
         public string Code { get; }
 
         /// <summary>
-        /// Effect value.
+        /// Description of the effect. This is a brief description of the effect.
         /// </summary>
-        public int Value { get; }
+        public string Description { get; }
+
+        /// <summary>
+        /// Type of the effect.
+        /// </summary>
+        public EffectType Type { get; }
+
+        /// <summary>
+        /// Subtype of the effect.
+        /// </summary>
+        public EffectSubtype Subtype { get; }
     }
 }

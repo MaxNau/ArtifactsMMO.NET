@@ -21,6 +21,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using ArtifactsMMO.NET.Endpoints.Notifications;
+using ArtifactsMMO.NET.Endpoints.Effects;
 
 namespace ArtifactsMMO.NET
 {
@@ -53,6 +54,7 @@ namespace ArtifactsMMO.NET
             Resources = new Resources(httpClient, apiKey);
             MyCharacters = new MyCharacters(httpClient, apiKey);
             Badges = new Badges(httpClient, apiKey);
+            Effects = new Effects(httpClient, apiKey);
             Notifications = new Notifications(apiKey);
         }
 
@@ -74,6 +76,7 @@ namespace ArtifactsMMO.NET
             Resources = new Resources(httpClient, apiKey, jsonSerializerOptionsFactory);
             MyCharacters = new MyCharacters(httpClient, apiKey, jsonSerializerOptionsFactory);
             Badges = new Badges(httpClient, apiKey, jsonSerializerOptionsFactory);
+            Effects = new Effects(httpClient, apiKey, jsonSerializerOptionsFactory);
             Notifications = new Notifications(apiKey, jsonSerializerOptionsFactory);
         }
 
@@ -161,6 +164,11 @@ namespace ArtifactsMMO.NET
         /// <inheritdoc/>
         /// </summary>
         public IBadges Badges { get; }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public IEffects Effects { get; }
 
         /// <summary>
         /// <inheritdoc/>

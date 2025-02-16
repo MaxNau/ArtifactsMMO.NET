@@ -1,15 +1,15 @@
 ﻿using ArtifactsMMO.NET.Integration.Tests.Helpers;
 using ArtifactsMMO.NET.Queries;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-
-namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.Badges
+namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.Effects
 {
-    public class BadgesEndpointTests : IClassFixture<TestFixture>
+    public class EffectsEndpointTests : IClassFixture<TestFixture>
     {
         private readonly IArtifactsMMOClient _client;
 
-        public BadgesEndpointTests(TestFixture fixture)
+        public EffectsEndpointTests(TestFixture fixture)
         {
             _client = fixture.ServiceProvider.GetRequiredService<IArtifactsMMOClient>();
         }
@@ -19,7 +19,7 @@ namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.Badges
         {
             await PagedDataLoader.GetAllDataAsync(async (page, pageSize) =>
             {
-                return await _client.Badges.GetAsync(new BadgesQuery(page: page, size: pageSize));
+                return await _client.Effects.GetAsync(new EffectsQuery(page: page, size: pageSize));
             });
         }
     }

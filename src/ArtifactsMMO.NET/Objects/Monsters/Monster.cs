@@ -15,7 +15,7 @@ namespace ArtifactsMMO.NET.Objects.Monsters
         [JsonConstructor]
         internal Monster(string name, string code, long level, long hp, long attackFire, long attackEarth,
             long attackWater, long attackAir, long resFire, long resEarth, long resWater, long resAir,
-            int criticalStrike, IReadOnlyCollection<Effect> effects,
+            int criticalStrike, IReadOnlyCollection<SimpleEffect> effects,
             long minGold, long maxGold, IReadOnlyCollection<DropDetails> drops)
         {
             Name = name;
@@ -105,7 +105,7 @@ namespace ArtifactsMMO.NET.Objects.Monsters
         /// <summary>
         /// List of effects.
         /// </summary>
-        public IReadOnlyCollection<Effect> Effects { get; }
+        public IReadOnlyCollection<SimpleEffect> Effects { get; }
 
         /// <summary>
         /// Monster minimum gold drop.
