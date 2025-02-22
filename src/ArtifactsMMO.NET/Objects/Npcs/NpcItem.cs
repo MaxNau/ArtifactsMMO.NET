@@ -10,7 +10,7 @@ namespace ArtifactsMMO.NET.Objects.Npcs
         internal NpcItem() { }
 
         [JsonConstructor]
-        internal NpcItem(string code, string npc, int buyPrice, int? sellPrice)
+        internal NpcItem(string code, string npc, int? buyPrice, int? sellPrice)
         {
             Code = code;
             Npc = npc;
@@ -31,7 +31,7 @@ namespace ArtifactsMMO.NET.Objects.Npcs
         /// <summary>
         /// Price to buy the item.
         /// </summary>
-        public int BuyPrice { get; }
+        public int? BuyPrice { get; }
 
         /// <summary>
         /// Price to sell the item.
