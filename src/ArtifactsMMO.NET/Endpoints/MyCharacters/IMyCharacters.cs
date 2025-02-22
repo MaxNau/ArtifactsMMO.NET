@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using ArtifactsMMO.NET.Enums.ErrorCodes.Action;
 using ArtifactsMMO.NET.Exceptions;
+using ArtifactsMMO.NET.Objects.MyCharacter.Npc;
 
 namespace ArtifactsMMO.NET.Endpoints.MyCharacters
 {
@@ -197,6 +198,28 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
         Task<(BankExtensionTransaction result, BuyBankExpansionError? error)> BuyBankExpansionAsync(string name, CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Buy an item from an NPC on the character's map.
+        /// </summary>
+        /// <param name="name">The name of the character buying the item.</param>
+        /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
+        /// <returns>A task representing the asynchronous operation.
+        /// The task result contains a tuple with the <see cref="NpcMerchantTransaction"/>
+        /// and an optional <see cref="NpcBuyItemError"/>.</returns>
+        /// <exception cref="ApiException"></exception>
+        Task<(NpcMerchantTransaction result, NpcBuyItemError? error)> NpcBuyItemAsync(string name, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Sell an item from an NPC on the character's map.
+        /// </summary>
+        /// <param name="name">The name of the character selling the item.</param>
+        /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
+        /// <returns>A task representing the asynchronous operation.
+        /// The task result contains a tuple with the <see cref="NpcMerchantTransaction"/>
+        /// and an optional <see cref="NpcSellItemError"/>.</returns>
+        /// <exception cref="ApiException"></exception>
+        Task<(NpcMerchantTransaction result, NpcSellItemError? error)> NpcSellItemAsync(string name, CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Accepting a new task.
         /// </summary>
         /// <param name="name">The name of the character accepting the task.</param>
@@ -306,16 +329,5 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
         /// The task result contains a read-only collection of <see cref="Character"/> instances.</returns>
         /// <exception cref="ApiException"></exception>
         Task<IReadOnlyCollection<Character>> GetMyCharactersAsync(CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Exchange 1 gift for a random reward
-        /// </summary>
-        /// <param name="name">The name of the character exchanging task rewards.</param>
-        /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
-        /// <returns>A task representing the asynchronous operation.
-        /// The task result contains a tuple with the <see cref="TaskRewardData"/>
-        /// and an optional <see cref="TaskExchangeError"/>.</returns>
-        /// <exception cref="ApiException"></exception>
-        Task<(TaskRewardData result, TaskExchangeError? error)> ChristmasExchangeAsync(string name, CancellationToken cancellationToken = default);
     }
 }

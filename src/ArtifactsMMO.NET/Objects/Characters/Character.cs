@@ -19,15 +19,15 @@ namespace ArtifactsMMO.NET.Objects.Characters
             int weaponcraftingLevel, int weaponcraftingXp, int weaponcraftingMaxXp, int gearcraftingLevel,
             int gearcraftingXp, int gearcraftingMaxXp, int jewelrycraftingLevel, int jewelrycraftingXp,
             int jewelrycraftingMaxXp, int cookingLevel, int cookingXp, int cookingMaxXp, int alchemyLevel,
-            int alchemyXp, int alchemyMaxXp, int hp, int haste, string account,
-            int criticalStrike, int stamina, int attackFire, int attackEarth, int attackWater, int attackAir,
-            int dmgFire, int dmgEarth, int dmgWater, int dmgAir, int resFire, int resEarth, int resWater,
+            int alchemyXp, int alchemyMaxXp, int hp, int haste, string account, int criticalStrike, int wisdom,
+            int prospecting, int attackFire, int attackEarth, int attackWater,int attackAir, int dmg, int dmgFire,
+            int dmgEarth, int dmgWater, int dmgAir, int resFire,int resEarth, int resWater,
             int resAir, int x, int y, int cooldown, DateTimeOffset? cooldownExpiration, string weaponSlot,
             string shieldSlot, string helmetSlot, string bodyArmorSlot, string legArmorSlot, string bootsSlot,
             string ring1Slot, string ring2Slot, string amuletSlot, string artifact1Slot, string artifact2Slot,
             string artifact3Slot, string utility1Slot, int utility1SlotQuantity, string utility2Slot,
-            int utility2SlotQuantity, string task, string taskType, int taskProgress, int taskTotal,
-            int inventoryMaxItems, int maxHp, IReadOnlyCollection<InventorySlot> inventory)
+            int utility2SlotQuantity, string bagSlot, string runeSlot, string task, string taskType, int taskProgress,
+            int taskTotal, int inventoryMaxItems, int maxHp, IReadOnlyCollection<InventorySlot> inventory)
         {
             Name = name;
             Account = account;
@@ -65,11 +65,13 @@ namespace ArtifactsMMO.NET.Objects.Characters
             Hp = hp;
             Haste = haste;
             CriticalStrike = criticalStrike;
-            Stamina = stamina;
+            Wisdom = wisdom;
+            Prospecting = prospecting;
             AttackFire = attackFire;
             AttackEarth = attackEarth;
             AttackWater = attackWater;
             AttackAir = attackAir;
+            Dmg = dmg;
             DmgFire = dmgFire;
             DmgEarth = dmgEarth;
             DmgWater = dmgWater;
@@ -98,6 +100,8 @@ namespace ArtifactsMMO.NET.Objects.Characters
             Utility1SlotQuantity = utility1SlotQuantity;
             Utility2Slot = utility2Slot;
             Utility2SlotQuantity = utility2SlotQuantity;
+            BagSlot = bagSlot;
+            RuneSlot = runeSlot;
             Task = task;
             TaskType = taskType;
             TaskProgress = taskProgress;
@@ -278,20 +282,24 @@ namespace ArtifactsMMO.NET.Objects.Characters
         public int Hp { get; }
 
         /// <summary>
-        /// *Character Haste. Increase speed attack (reduce fight cooldown)
+        /// *Increase speed attack (reduce fight cooldown)
         /// </summary>
         public int Haste { get; }
 
         /// <summary>
-        /// *Not available, on the roadmap. Character Critical Strike.
-        /// Critical strikes increase the attack's damage.
+        /// % Critical strike. Critical strikes increase the attack's damage by 30%.
         /// </summary>
         public int CriticalStrike { get; }
 
         /// <summary>
-        /// *Not available, on the roadmap. Regenerates life at the start of each turn.
+        /// Wisdom increases the amount of XP gained from fights.
         /// </summary>
-        public int Stamina { get; }
+        public int Wisdom { get; }
+
+        /// <summary>
+        /// Prospecting increases the chances of getting better loot.
+        /// </summary>
+        public int Prospecting { get; }
 
         /// <summary>
         /// Fire attack.
@@ -314,42 +322,47 @@ namespace ArtifactsMMO.NET.Objects.Characters
         public int AttackAir { get; }
 
         /// <summary>
-        /// % Fire damage.
+        /// % Damage. Damage increases your attack in all elements.
+        /// </summary>
+        public int Dmg { get; }
+
+        /// <summary>
+        /// % Fire damage. Damage increases your fire attack.
         /// </summary>
         public int DmgFire { get; }
 
         /// <summary>
-        /// % Earth damage.
+        /// % Earth damage. Damage increases your earth attack.
         /// </summary>
         public int DmgEarth { get; }
 
         /// <summary>
-        /// % Water damage.
+        /// % Water damage. Damage increases your water attack.
         /// </summary>
         public int DmgWater { get; }
 
         /// <summary>
-        /// % Air damage.
+        /// % Air damage. Damage increases your air attack.
         /// </summary>
         public int DmgAir { get; }
 
         /// <summary>
-        /// % Fire resistance.
+        /// % Fire resistance. Reduces fire attack.
         /// </summary>
         public int ResFire { get; }
 
         /// <summary>
-        /// % Earth resistance.
+        /// % Earth resistance. Reduces earth attack.
         /// </summary>
         public int ResEarth { get; }
 
         /// <summary>
-        /// % Water resistance.
+        /// % Water resistance. Reduces water attack.
         /// </summary>
         public int ResWater { get; }
 
         /// <summary>
-        /// % Air resistance.
+        /// % Air resistance. Reduces air attack.
         /// </summary>
         public int ResAir { get; }
 
@@ -453,6 +466,16 @@ namespace ArtifactsMMO.NET.Objects.Characters
         /// Utility second slot quantity.
         /// </summary>
         public int Utility2SlotQuantity { get; }
+
+        /// <summary>
+        /// Bag slot.
+        /// </summary>
+        public string BagSlot { get; }
+
+        /// <summary>
+        /// Rune slot.
+        /// </summary>
+        public string RuneSlot { get; }
 
         /// <summary>
         /// Task in progress.

@@ -39,6 +39,11 @@
         /// Santa provide quest to the nice characters in this world.
         /// Seasonal content type
         /// </summary>
-        SantaClaus
+        SantaClaus,
+
+        /// <summary>
+        /// Different types of Npc's
+        /// </summary>
+        Npc,
     }
 }

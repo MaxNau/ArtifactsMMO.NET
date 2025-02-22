@@ -39,5 +39,10 @@ namespace ArtifactsMMO.NET.Objects.Leaderboard
         /// Achievements points.
         /// </summary>
         public int AchievementsPoints { get; }
+
+        /// <summary>
+        /// Gold in the account.
+        /// </summary>
+        public int Gold { get; }
     }
 }

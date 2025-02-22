@@ -20,6 +20,10 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
+using ArtifactsMMO.NET.Endpoints.Notifications;
+using ArtifactsMMO.NET.Endpoints.Effects;
+using ArtifactsMMO.NET.Endpoints.Npcs;
+
 namespace ArtifactsMMO.NET
 {
     /// <summary>
@@ -51,9 +55,13 @@ namespace ArtifactsMMO.NET
             Resources = new Resources(httpClient, apiKey);
             MyCharacters = new MyCharacters(httpClient, apiKey);
             Badges = new Badges(httpClient, apiKey);
+            Effects = new Effects(httpClient, apiKey);
+            Npcs = new Npcs(httpClient, apiKey);
+            Notifications = new Notifications(apiKey);
         }
 
-       internal ArtifactsMMOClient(HttpClient httpClient, string apiKey,
+
+        internal ArtifactsMMOClient(HttpClient httpClient, string apiKey,
             IJsonSerializerOptionsFactory jsonSerializerOptionsFactory)
             : base(httpClient, apiKey, jsonSerializerOptionsFactory)
         {
@@ -70,6 +78,9 @@ namespace ArtifactsMMO.NET
             Resources = new Resources(httpClient, apiKey, jsonSerializerOptionsFactory);
             MyCharacters = new MyCharacters(httpClient, apiKey, jsonSerializerOptionsFactory);
             Badges = new Badges(httpClient, apiKey, jsonSerializerOptionsFactory);
+            Effects = new Effects(httpClient, apiKey, jsonSerializerOptionsFactory);
+            Npcs = new Npcs(httpClient, apiKey, jsonSerializerOptionsFactory);
+            Notifications = new Notifications(apiKey, jsonSerializerOptionsFactory);
         }
 
         /// <summary>
@@ -156,5 +167,20 @@ namespace ArtifactsMMO.NET
         /// <inheritdoc/>
         /// </summary>
         public IBadges Badges { get; }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public IEffects Effects { get; }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public INpcs Npcs { get; }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public INotifications Notifications { get; set; }
     }
 }

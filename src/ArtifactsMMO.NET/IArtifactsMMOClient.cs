@@ -15,6 +15,9 @@ using System.Threading.Tasks;
 using System.Threading;
 using ArtifactsMMO.NET.Endpoints.MyCharacters;
 using ArtifactsMMO.NET.Endpoints.Badges;
+using ArtifactsMMO.NET.Endpoints.Notifications;
+using ArtifactsMMO.NET.Endpoints.Effects;
+using ArtifactsMMO.NET.Endpoints.Npcs;
 
 namespace ArtifactsMMO.NET
 {
@@ -101,5 +104,20 @@ namespace ArtifactsMMO.NET
         /// Provides access to badge-realted functionality.
         /// </summary>
         IBadges Badges { get; }
+
+        /// <summary>
+        /// Provides access to effects-realted functionality.
+        /// </summary>
+        IEffects Effects { get; }
+
+        /// <summary>
+        /// Provides access to NPCs-realted functionality.
+        /// </summary>
+        INpcs Npcs { get; }
+
+        /// <summary>
+        /// Provide access to the real time notifications(founder and subscribers only)
+        /// </summary>
+        INotifications Notifications { get; set; }
     }
 }

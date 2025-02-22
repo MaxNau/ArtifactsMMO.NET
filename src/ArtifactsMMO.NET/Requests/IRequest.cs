@@ -21,6 +21,7 @@ namespace ArtifactsMMO.NET.Requests
     [JsonDerivedType(typeof(UseItemRequest))]
     [JsonDerivedType(typeof(GrandExchangeCreateSellOrderRequest))]
     [JsonDerivedType(typeof(GrandExchangeCancelSellOrderRequest))]
+    [JsonDerivedType(typeof(OpenNotificationsChannelRequest))]
     internal interface IRequest
     {
     }

@@ -43,7 +43,12 @@
         /// <summary>
         /// Achievement that falls under a different category.
         /// </summary>
-        Other
+        Other,
+
+        /// <summary>
+        /// ???
+        /// </summary>
+        Use
     }
 
 }

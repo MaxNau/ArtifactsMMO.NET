@@ -6,6 +6,7 @@ using ArtifactsMMO.NET.Objects.MyCharacter;
 using ArtifactsMMO.NET.Objects.MyCharacter.Bank;
 using ArtifactsMMO.NET.Objects.MyCharacter.Fight;
 using ArtifactsMMO.NET.Objects.MyCharacter.GrandExchange;
+using ArtifactsMMO.NET.Objects.MyCharacter.Npc;
 using ArtifactsMMO.NET.Queries;
 using ArtifactsMMO.NET.Requests;
 using ArtifactsMMO.NET.Validators;
@@ -119,6 +120,18 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
             return await PostAsync<BankExtensionTransaction, BuyBankExpansionError>($"my/{name}/action/bank/buy_expansion", null, cancellationToken).ConfigureAwait(false);
         }
 
+        public async Task<(NpcMerchantTransaction result, NpcBuyItemError? error)> NpcBuyItemAsync(string name, CancellationToken cancellationToken = default)
+        {
+            _nameValidator.Validate(name);
+            return await PostAsync<NpcMerchantTransaction, NpcBuyItemError>($"my/{name}/action/npc/buy", null, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<(NpcMerchantTransaction result, NpcSellItemError? error)> NpcSellItemAsync(string name, CancellationToken cancellationToken = default)
+        {
+            _nameValidator.Validate(name);
+            return await PostAsync<NpcMerchantTransaction, NpcSellItemError>($"my/{name}/action/npc/sell", null, cancellationToken).ConfigureAwait(false);
+        }
+
         public async Task<(TaskData result, AcceptNewTaskError? error)> AcceptNewTaskAsync(string name, CancellationToken cancellationToken = default)
         {
             _nameValidator.Validate(name);
@@ -175,12 +188,6 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
         public async Task<IReadOnlyCollection<Character>> GetMyCharactersAsync(CancellationToken cancellationToken = default)
         {
             return await GetAsync<IReadOnlyCollection<Character>>($"my/characters", cancellationToken).ConfigureAwait(false);
-        }
-
-        public async Task<(TaskRewardData result, TaskExchangeError? error)> ChristmasExchangeAsync(string name, CancellationToken cancellationToken = default)
-        {
-            _nameValidator.Validate(name);
-            return await PostAsync<TaskRewardData, TaskExchangeError>($"my/{name}/action/christmas/exchange", null, cancellationToken).ConfigureAwait(false);
         }
     }
 }

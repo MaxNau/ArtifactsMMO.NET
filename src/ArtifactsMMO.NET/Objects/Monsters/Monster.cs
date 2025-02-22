@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using ArtifactsMMO.NET.Objects.Effects;
 using ArtifactsMMO.NET.Objects.Loot;
 
 namespace ArtifactsMMO.NET.Objects.Monsters
@@ -14,6 +15,7 @@ namespace ArtifactsMMO.NET.Objects.Monsters
         [JsonConstructor]
         internal Monster(string name, string code, long level, long hp, long attackFire, long attackEarth,
             long attackWater, long attackAir, long resFire, long resEarth, long resWater, long resAir,
+            int criticalStrike, IReadOnlyCollection<SimpleEffect> effects,
             long minGold, long maxGold, IReadOnlyCollection<DropDetails> drops)
         {
             Name = name;
@@ -28,6 +30,8 @@ namespace ArtifactsMMO.NET.Objects.Monsters
             ResEarth = resEarth;
             ResWater = resWater;
             ResAir = resAir;
+            CriticalStrike = criticalStrike;
+            Effects = effects;
             MinGold = minGold;
             MaxGold = maxGold;
             Drops = drops;
@@ -92,6 +96,16 @@ namespace ArtifactsMMO.NET.Objects.Monsters
         /// Monster % air resistance.
         /// </summary>
         public long ResAir { get; }
+
+        /// <summary>
+        /// Monster % critical strike.
+        /// </summary>
+        public int CriticalStrike { get; }
+
+        /// <summary>
+        /// List of effects.
+        /// </summary>
+        public IReadOnlyCollection<SimpleEffect> Effects { get; }
 
         /// <summary>
         /// Monster minimum gold drop.

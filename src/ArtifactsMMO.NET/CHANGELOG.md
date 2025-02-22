@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.0.0]
+
+### Added
+- New Schema & Enum Updates:
+        - AchievementType: New enum value - Use.
+        - Character Schema: Updated with new properties.
+        - Event Schema: Updated with new changes.
+        - ItemType Enum: Added new values - Rune, Bag.
+        - Effect Schema: Updated to include new fields and properties.
+        - Leaderboards Schema: Updated to include new features.
+        - MapContentType Enum: Added new value - Npc.
+        - Monster Schema: Updated with new details.
+        - CooldownReason Enum: Added new values - BuyNpc, SellNpc.
+        - ItemSlot Enum: Added new values - Bag, Rune.
+
+- New Endpoints
+        - Effects Endpoint.
+        - NpcBuyItem.
+        - NpcSellItem.
+		- Websocket Endpoint.
+### Removed
+- Removed the Christmas Exchange API path without deprecation.
+
 ## [3.0.5]
 
 ### Fixed

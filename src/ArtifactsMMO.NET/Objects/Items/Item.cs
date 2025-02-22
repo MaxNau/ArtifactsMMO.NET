@@ -15,7 +15,7 @@ namespace ArtifactsMMO.NET.Objects.Items
 
         [JsonConstructor]
         internal Item(string name, string code, int level, ItemType type, string subtype, string description,
-            bool tradeable, IReadOnlyCollection<Effect> effects, Craft craft)
+            bool tradeable, IReadOnlyCollection<SimpleEffect> effects, Craft craft)
         {
             Name = name;
             Code = code;
@@ -66,7 +66,7 @@ namespace ArtifactsMMO.NET.Objects.Items
         /// <summary>
         /// List of object effects. For equipment, it will include item stats. (optional)
         /// </summary>
-        public IReadOnlyCollection<Effect> Effects { get; }
+        public IReadOnlyCollection<SimpleEffect> Effects { get; }
 
         /// <summary>
         /// Craft information. If applicable. (optional)
