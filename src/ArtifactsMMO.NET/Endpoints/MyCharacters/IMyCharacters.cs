@@ -201,23 +201,25 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
         /// Buy an item from an NPC on the character's map.
         /// </summary>
         /// <param name="name">The name of the character buying the item.</param>
+        /// <param name="npcBuyItemRequest">The request <see cref="NpcBuyItemRequest"/> containing details about the item to buy.</param>
         /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
         /// <returns>A task representing the asynchronous operation.
         /// The task result contains a tuple with the <see cref="NpcMerchantTransaction"/>
         /// and an optional <see cref="NpcBuyItemError"/>.</returns>
         /// <exception cref="ApiException"></exception>
-        Task<(NpcMerchantTransaction result, NpcBuyItemError? error)> NpcBuyItemAsync(string name, CancellationToken cancellationToken = default);
+        Task<(NpcMerchantTransaction result, NpcBuyItemError? error)> NpcBuyItemAsync(string name, NpcBuyItemRequest npcBuyItemRequest, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Sell an item from an NPC on the character's map.
         /// </summary>
         /// <param name="name">The name of the character selling the item.</param>
+        /// <param name="npcSellItemRequest">The request <see cref="NpcSellItemRequest"/> containing details about the item to sell.</param>
         /// <param name="cancellationToken">A token for canceling the asynchronous operation.</param>
         /// <returns>A task representing the asynchronous operation.
         /// The task result contains a tuple with the <see cref="NpcMerchantTransaction"/>
         /// and an optional <see cref="NpcSellItemError"/>.</returns>
         /// <exception cref="ApiException"></exception>
-        Task<(NpcMerchantTransaction result, NpcSellItemError? error)> NpcSellItemAsync(string name, CancellationToken cancellationToken = default);
+        Task<(NpcMerchantTransaction result, NpcSellItemError? error)> NpcSellItemAsync(string name, NpcSellItemRequest npcSellItemRequest, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Accepting a new task.
