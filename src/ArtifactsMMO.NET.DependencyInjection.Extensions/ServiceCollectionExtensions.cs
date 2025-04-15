@@ -82,6 +82,7 @@ namespace ArtifactsMMO.NET.DependencyInjection.Extensions
 
             var client = CreateAndConfigureHttpClient();
             services.AddSingleton<IArtifactsMMOClient>(new ArtifactsMMOClient(client, apiKey, new JsonSerializerOptionsFactory()));
+            services.AddSingleton<IArtifactsMMOAccountsClient>(new ArtifactsMMOAccountsClient(client, apiKey, new JsonSerializerOptionsFactory()));
 
             return services;
         }
