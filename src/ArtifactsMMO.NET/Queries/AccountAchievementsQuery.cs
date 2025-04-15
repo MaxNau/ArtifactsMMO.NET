@@ -29,7 +29,7 @@ namespace ArtifactsMMO.NET.Queries
         /// <param name="page">The page number for pagination. Optional.</param>
         /// <param name="size">The number of items per page. Optional.</param>
         /// <exception cref="InvalidQueryParameter"></exception>
-        public AccountAchievementsQuery(bool? completed, AchievementType? type = null,
+        public AccountAchievementsQuery(bool? completed = false, AchievementType? type = null,
             int? page = null, int? size = null)
             : base(page, size)
         {

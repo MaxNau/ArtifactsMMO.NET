@@ -1,5 +1,6 @@
 ﻿using ArtifactsMMO.NET.Enums.ErrorCodes.Accounts;
 using ArtifactsMMO.NET.Exceptions;
+using ArtifactsMMO.NET.Internal;
 using ArtifactsMMO.NET.Objects;
 using ArtifactsMMO.NET.Objects.Account;
 using ArtifactsMMO.NET.Objects.Achievements;
@@ -22,6 +23,14 @@ namespace ArtifactsMMO.NET.Endpoints.Accounts
         /// </summary>
         /// <param name="httpClient"></param>
         public ArtifactsMMOAccountsClient(HttpClient httpClient) : base(httpClient)
+        {
+        }
+
+        internal ArtifactsMMOAccountsClient(
+            HttpClient httpClient,
+            string apiKey,
+            IJsonSerializerOptionsFactory jsonSerializerOptionsFactory)
+            : base(httpClient, apiKey, jsonSerializerOptionsFactory)
         {
         }
 

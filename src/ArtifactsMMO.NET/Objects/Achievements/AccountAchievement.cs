@@ -13,7 +13,7 @@ namespace ArtifactsMMO.NET.Objects.Achievements
 
         [JsonConstructor]
         internal AccountAchievement(string name, string code, string description, int points, AchievementType type,
-            string target, int total, AchievementRewards rewards, int current, DateTimeOffset completedAt)
+            string target, int total, AchievementRewards rewards, int current, DateTimeOffset? completedAt)
         {
             Name = name;
             Code = code;
@@ -78,6 +78,6 @@ namespace ArtifactsMMO.NET.Objects.Achievements
         /// <summary>
         /// Completed at.
         /// </summary>
-        DateTimeOffset CompletedAt { get; }
+        public DateTimeOffset? CompletedAt { get; }
     }
 }

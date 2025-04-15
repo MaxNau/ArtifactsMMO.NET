@@ -1,7 +1,5 @@
 ﻿using ArtifactsMMO.NET.Enums;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.Objects.Account
@@ -14,7 +12,7 @@ namespace ArtifactsMMO.NET.Objects.Account
         internal AccountDetails() { }
 
         [JsonConstructor]
-        internal AccountDetails(string username, bool subscribed, List<string> badges, bool banned,
+        internal AccountDetails(string username, bool subscribed, IReadOnlyCollection<object> badges, bool banned,
             string banReason, int achievementsPoints, MemberStatus status)
         {
             Username = username;
@@ -49,7 +47,7 @@ namespace ArtifactsMMO.NET.Objects.Account
         /// <summary>
         /// List of badges earned by the account.
         /// </summary>
-        public IReadOnlyCollection<object> Badges { get; } = new List<object>();
+        public IReadOnlyCollection<object> Badges { get; }
 
         /// <summary>
         /// Value indicating whether the account is banned.

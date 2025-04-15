@@ -1,13 +1,13 @@
 ﻿using ArtifactsMMO.NET.Enums.ErrorCodes.Accounts;
 using ArtifactsMMO.NET.Exceptions;
-using ArtifactsMMO.NET.Objects.Achievements;
 using ArtifactsMMO.NET.Objects;
+using ArtifactsMMO.NET.Objects.Account;
+using ArtifactsMMO.NET.Objects.Achievements;
 using ArtifactsMMO.NET.Queries;
 using ArtifactsMMO.NET.Requests;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using ArtifactsMMO.NET.Objects.Account;
 
 namespace ArtifactsMMO.NET.Endpoints.Accounts
 {
